@@ -3,11 +3,15 @@ const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
 
+// load the env vars
+require('dotenv').config();
+
 const app = express();
+
+require('./config/database');
 
 app.use(logger('dev'));
 app.use(express.json());
-
 app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
