@@ -1,9 +1,10 @@
 import React from 'react'
+import { numToDay } from '../../utils/dateHelpers'
 
-function ContractsListDate() {
+function ContractsListDate({listDay}) {
   return (
     <div className='component'>
-      Monday
+      {numToDay(listDay)}
     </div>
   )
 }

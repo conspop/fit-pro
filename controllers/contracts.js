@@ -13,7 +13,7 @@ async function create(req, res) {
   try {
     await contract.save();
     await User.findById(req.user._id, function(err, user){
-      user.contracts = contract._id
+      user.contracts.push(contract._id) 
       user.save()
     })
     
@@ -25,11 +25,11 @@ async function create(req, res) {
 }
 
 async function index(req, res) {
-  User.findById(req.user._id).populate('contracts').exec(function(err, {contracts}) {
-    const contractsList = {};
+  await User.findById(req.user._id).populate('contracts').exec(function(err, {contracts}) {
+    let contractsList = {};
     contracts.forEach(contract => {
       const {startDate, studio, style, time, rate, base, perHead, estimate, classLength} = contract
-      dayOfWeek = moment(startDate).format('dddd')
+      dayOfWeek = startDate.getDay()
       const formattedContractInfo = {
         studio,
         style,
@@ -44,6 +44,8 @@ async function index(req, res) {
         contractsList[dayOfWeek] = [formattedContractInfo]
       }
     })
+    contractsList=Object.entries(contractsList)
+    console.log(contractsList)
     res.json(contractsList)
   })
 }

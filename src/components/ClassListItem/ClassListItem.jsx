@@ -1,18 +1,18 @@
 import React from 'react'
 
 
-function ClassListItem() {
+function ClassListItem({studio, style, time, classLength, rateType, rate}) {
   return (
     <div className='component'>
       <table>
         <tbody>
           <tr>
-            <td>ALIVE</td>
-            <td>Flow</td>
-            <td>10-11am</td>
-            <td>$50</td>
-            <td><button>Taught</button></td>
-            <td><button>Cancelled</button></td>
+            <td>{studio}</td>
+            <td>{style}</td>
+            <td>{time}</td>
+            <td>{classLength}</td>
+            <td>{rateType}</td>
+            <td>{rate}</td>
           </tr>
         </tbody>
       </table>
