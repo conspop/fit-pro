@@ -116,7 +116,7 @@ class AddItemModal extends Component {
           </div>
           <div> 
             <Space direction="vertical">
-              <DatePicker 
+              <DatePicker
                 onChange={this.handleStartDateChange} 
                 value={startDate}
               />

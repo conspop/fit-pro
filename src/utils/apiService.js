@@ -1,10 +1,15 @@
+import tokenService from './tokenService'
+
 const BASE_URL = '/api/'
 
 async function addContract(contract) {
   console.log(contract)
   return fetch(BASE_URL + 'contracts', {
     method: 'POST',
-    headers: new Headers({'Content-Type': 'application/json'}),
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
     body: JSON.stringify(contract)
   })
   .then(res => {
@@ -17,7 +22,10 @@ async function addContract(contract) {
 async function addSingle(single) {
   return fetch(BASE_URL + 'singles', {
     method: 'POST',
-    headers: new Headers({'Content-Type': 'application/json'}),
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
     body: JSON.stringify(single)
   })
   .then(res => {
@@ -27,7 +35,19 @@ async function addSingle(single) {
   })
 }
 
+async function getContracts() {
+  return fetch(BASE_URL + 'contracts', {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    })
+  })
+  .then(res => res.json())
+  .then(data => data)
+}
+
 export default {
   addContract,
-  addSingle
+  addSingle,
+  getContracts
 }

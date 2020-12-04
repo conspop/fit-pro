@@ -6,10 +6,12 @@ module.exports = {
 
 async function create(req, res) {
   const single = new Single(req.body);
-  console.log(single)
   try {
     await single.save();
-    console.log(single)
+    await User.findById(req.user._id, function(err, user){
+      user.singles = single._id
+      user.save()
+    })
     res.json(single);
   } catch (err) {
     // Probably a duplicate email

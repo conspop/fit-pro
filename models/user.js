@@ -8,6 +8,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
+  contracts: [{ type: Schema.Types.ObjectId, ref: 'Contract'}],
+  singles: [{ type: Schema.Types.ObjectId, ref: 'Single'}],
 });
 
 userSchema.pre('save', function(next) {
