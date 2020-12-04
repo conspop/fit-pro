@@ -12,6 +12,7 @@ require('./config/database');
 
 var usersRouter = require('./routes/api/users');
 var contractsRouter = require('./routes/api/contracts')
+var singlesRouter = require('./routes/api/singles')
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -19,6 +20,7 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.use('/api/contracts', contractsRouter);
+app.use('/api/singles', singlesRouter);
 app.use('/api/users', usersRouter);
 
 app.get('/*', function(req, res) {

@@ -1,20 +1,41 @@
 import { Component } from 'react'
 import './AddItemModal.css'
 import apiService from '../../utils/apiService'
+import { DatePicker, Space, TimePicker, Input } from 'antd';
 
 class AddItemModal extends Component {
   state = {
-    isContract: true,
+    isContract: false,
     isFlatRate: true,
     studio:'',
     style:'',
     startDate:'',
     endDate:'',
     date:'',
+    time:'',
+    classLength:'',
     rate:'',
     base:'',
     perHead:'',
     estimate:''
+  }
+
+  clearState() {
+    this.setState({
+      isContract: false,
+      isFlatRate: true,
+      studio:'',
+      style:'',
+      startDate:'',
+      endDate:'',
+      date:'',
+      time:'',
+      classLength:'',
+      rate:'',
+      base:'',
+      perHead:'',
+      estimate:''
+    })
   }
 
   handleToggle = (event) => {
@@ -35,32 +56,51 @@ class AddItemModal extends Component {
   }
 
   handleSubmit = async () => {
-    const contract = {...this.state}
-    
-    if (contract.isContract) {
-      delete contract.date
+    const details = {...this.state}
+    console.log('before augment:', details)
+    // if flat rate, remove variable rate fields. if not, remove flat rate.
+    if (details.isFlatRate) {
+      delete details.base
+      delete details.perHead
+      delete details.estimate
     } else {
-      delete contract.startDate
-      delete contract.endDate
+      delete details.rate
     }
-    
-    if (contract.isFlatRate) {
-      delete contract.base
-      delete contract.perHead
-      delete contract.estimate
+    // if contract, delete single date and post to db. if single, delete start and end date and post to db.
+    if (details.isContract) {
+      delete details.date
+      await apiService.addContract(details);
     } else {
-      delete contract.rate
+      delete details.startDate
+      delete details.endDate
+      console.log('before single: ',details)
+      await apiService.addSingle(details);
     }
-    
-    await apiService.addContract(contract);
+    this.clearState();
+  }
+
+  handleDateChange = (date) => {
+    this.setState({date:date})
+  }
+
+  handleStartDateChange = (date) => {
+    this.setState({startDate:date})
+  }
+
+  handleEndDateChange = (date) => {
+    this.setState({endDate:date})
+  }
+
+  handleTimeChange = (time) => {
+    this.setState({time:time})
   }
   
   render() {
-    const {isContract, isFlatRate, studio, style, startDate, endDate, date, rate, base, perHead, estimate} = this.state
+    const {isContract, isFlatRate, studio, style, classLength, rate, base, perHead, estimate, time, date, startDate, endDate} = this.state
     return (
       <div className='add-item-form'>
         <div>Studio:</div>
-        <div><input id='studio' value={studio} onChange={this.handleChange} /></div>
+        <div><Input id='studio' value={studio} onChange={this.handleChange} /></div>
         <div>Style:</div>
         <div><input id='style' value={style} onChange={this.handleChange} /></div>
         
@@ -71,17 +111,53 @@ class AddItemModal extends Component {
         </div>
         {isContract ?
         <>
-          <div>Start date:</div>
-          <div><input id='startDate' value={startDate} onChange={this.handleChange}/></div>
-          <div>End date:</div>
-          <div><input id='endDate' value={endDate} onChange={this.handleChange} /></div>
+          <div>
+            Start date:
+          </div>
+          <div> 
+            <Space direction="vertical">
+              <DatePicker 
+                onChange={this.handleStartDateChange} 
+                value={startDate}
+              />
+            </Space>
+          </div>
+          <div>
+            End date:
+          </div>
+          <div>
+            <Space direction="vertical">
+              <DatePicker 
+                onChange={this.handleEndDateChange} 
+                value={endDate}
+              />
+            </Space>
+          </div>
         </>
         :
         <>
-          <div>Date:</div>
-          <div><input id='date' value={date} onChange={this.handleChange} /></div>
+          Date:
+          <Space direction="vertical">
+            <DatePicker 
+              onChange={this.handleDateChange} 
+              value={date}
+            />
+          </Space>
         </>
         }
+        <>
+          Time:
+          <TimePicker 
+            use12hours
+            format="h:mm a"
+            minuteStep={15}
+            onChange={this.handleTimeChange}
+            value={time}
+          />
+        </>
+        <div>Length:</div>
+        <div><input id='classLength' value={classLength} onChange={this.handleChange} /></div>
+
 
         <div className='contract-single-toggle'>
           <div onClick={this.handleToggle}>Flat Rate</div>

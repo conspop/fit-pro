@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const contractSchema = new Schema({
+const singleSchema = new Schema({
   studio: String,
   style: String,
-  startDate: Date,
-  endDate: Date,
+  date: Date,
   time: Date,
   classLength: Number,
   rate: Number,
@@ -15,4 +14,4 @@ const contractSchema = new Schema({
   estimate: Number
 });
 
-module.exports = mongoose.model('Contract', contractSchema);
+module.exports = mongoose.model('Single', singleSchema);

@@ -8,7 +8,6 @@ import ContractsPage from './pages/ContractsPage/ContractsPage';
 import AddItemModal from './components/AddItemModal/AddItemModal'
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
-import AddItemFlow from './components/AddItemFlow/AddItemFlow';
 
 import userService from './utils/userService'
 
@@ -65,11 +64,6 @@ class App extends Component {
           <Route exact path='/add'>
             <div>
               <AddItemModal />
-            </div>
-          </Route>
-          <Route exact path='/flow'>
-            <div>
-              <AddItemFlow />
             </div>
           </Route>
           <Footer />
