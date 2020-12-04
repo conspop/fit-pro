@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import './AddItemModal.css'
+import apiService from '../../utils/apiService'
 
 class AddItemModal extends Component {
   state = {
@@ -31,6 +32,27 @@ class AddItemModal extends Component {
 
   handleChange = (event) => {
     this.setState({[event.target.id]:event.target.value})
+  }
+
+  handleSubmit = async () => {
+    const contract = {...this.state}
+    
+    if (contract.isContract) {
+      delete contract.date
+    } else {
+      delete contract.startDate
+      delete contract.endDate
+    }
+    
+    if (contract.isFlatRate) {
+      delete contract.base
+      delete contract.perHead
+      delete contract.estimate
+    } else {
+      delete contract.rate
+    }
+    
+    await apiService.addContract(contract);
   }
   
   render() {
@@ -82,7 +104,7 @@ class AddItemModal extends Component {
         </>
         }
 
-        <button>Add Contract</button>
+        <button onClick={this.handleSubmit}>Add Contract</button>
 
       </div>
     )

@@ -1,4 +1,3 @@
-import { token } from 'morgan';
 import tokenService from './tokenService'
 
 const BASE_URL = '/api/users/';
