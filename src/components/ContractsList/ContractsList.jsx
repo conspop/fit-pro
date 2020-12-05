@@ -16,10 +16,10 @@ function ContractsList(props) {
               <ContractsListItem
                 studio={listItem.studio}
                 style={listItem.style}
-                time={moment(listItem.time).format('h:ma')}
+                time={moment(listItem.time).format('h:mma')}
                 classLength={`${listItem.classLength} min`}
                 rateType={`${listItem.rate ? 'Flat Rate' : 'Per Head'}`}
-                rate={`$${listItem.rate}`}
+                rate={`$${listItem.rate ? listItem.rate : (listItem.base + listItem.perHead * listItem.estimate)}`}
                 contract={listItem}
               />
             )}

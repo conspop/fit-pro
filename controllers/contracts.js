@@ -1,4 +1,5 @@
 const moment = require('moment')
+const dateHelpers = require('../expressutils/dateHelpers')
 
 const Contract = require('../models/contract');
 const User = require('../models/user');
@@ -28,29 +29,20 @@ async function index(req, res) {
   await User.findById(req.user._id).populate('contracts').exec(function(err, {contracts}) {
     let contractsList = {};
     contracts.forEach(contract => {
-      // const {startDate, studio, style, time, rate, base, perHead, estimate, classLength} = contract
-      // dayOfWeek = startDate.getDay()
-      // const formattedContractInfo = {
-      //   studio,
-      //   style,
-      //   time: moment(time).format('h:ma'),
-      //   classLength: `${classLength} min`,
-      //   rateType: `${rate ? 'Flat Rate' : 'Per Head'}`,
-      //   rate: `$${rate ? rate : (base + perHead * estimate)}`,
-      //   id: 
-      // }
-      // if (contractsList[dayOfWeek]) {
-      //   contractsList[dayOfWeek].push(formattedContractInfo)
-      // } else {
-      //   contractsList[dayOfWeek] = [formattedContractInfo]
-      // }
       dayOfWeek = contract.startDate.getDay();
+      console.log(contract.studio)
+      console.log(dateHelpers.getTime(contract.time))
       if (contractsList[dayOfWeek]) { 
-        const dayOfWeekArrayByTime = contractsList[dayOfWeek].map(contract => moment(contract.time,'h:ma'))
-        const indexForContract = dayOfWeekArrayByTime.findIndex(time => moment(contract.time,'h:ma').isBefore(time))
+        const dayOfWeekArrayByTime = contractsList[dayOfWeek].map(contract => dateHelpers.getTime(contract.time))
+        const indexForContract = dayOfWeekArrayByTime.findIndex(time => dateHelpers.getTime(contract.time).isBefore(time))
+        console.log(indexForContract)
         if (indexForContract > 0) {
-          contractsList[dayOfWeek].splice(indexForContract, contract)
+          console.log('splice')
+          console.log(contract)
+          contractsList[dayOfWeek].splice(indexForContract,0, contract)
+          console.log(contractsList[dayOfWeek])
         } else {
+          console.log('push')
           contractsList[dayOfWeek].push(contract)
         }
       } else {

@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export function numToDay(dayNum) {
   const weekdays = {
     0: 'Sunday',
@@ -10,4 +12,8 @@ export function numToDay(dayNum) {
   }
 
   return weekdays[dayNum]
+}
+
+export function getTime(date) {
+  return moment({h: date.hours(), m: date.minutes()})
 }
