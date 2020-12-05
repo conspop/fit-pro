@@ -9,14 +9,13 @@ class ContractsPage extends Component {
   
   componentDidMount = async () => {
     const contractsList = await apiService.getContracts();
-    console.log(contractsList)
     this.setState({contractsList: contractsList})
   }
   
   render() {
     return (
       <div>
-        {this.state.contractsList !== '' ? <ContractsList contractsList={this.state.contractsList} /> : 'Loading!'}
+        {this.state.contractsList !== '' ? <ContractsList contractsList={this.state.contractsList} /> : ''}
       </div>
     )
   }

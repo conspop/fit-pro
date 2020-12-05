@@ -28,24 +28,36 @@ async function index(req, res) {
   await User.findById(req.user._id).populate('contracts').exec(function(err, {contracts}) {
     let contractsList = {};
     contracts.forEach(contract => {
-      const {startDate, studio, style, time, rate, base, perHead, estimate, classLength} = contract
-      dayOfWeek = startDate.getDay()
-      const formattedContractInfo = {
-        studio,
-        style,
-        time: moment(time).format('h:ma'),
-        classLength: `${classLength} min`,
-        rateType: `${rate ? 'Flat Rate' : 'Per Head'}`,
-        rate: `$${rate ? rate : (base + perHead * estimate)}`
-      }
-      if (contractsList[dayOfWeek]) {
-        contractsList[dayOfWeek].push(formattedContractInfo)
+      // const {startDate, studio, style, time, rate, base, perHead, estimate, classLength} = contract
+      // dayOfWeek = startDate.getDay()
+      // const formattedContractInfo = {
+      //   studio,
+      //   style,
+      //   time: moment(time).format('h:ma'),
+      //   classLength: `${classLength} min`,
+      //   rateType: `${rate ? 'Flat Rate' : 'Per Head'}`,
+      //   rate: `$${rate ? rate : (base + perHead * estimate)}`,
+      //   id: 
+      // }
+      // if (contractsList[dayOfWeek]) {
+      //   contractsList[dayOfWeek].push(formattedContractInfo)
+      // } else {
+      //   contractsList[dayOfWeek] = [formattedContractInfo]
+      // }
+      dayOfWeek = contract.startDate.getDay();
+      if (contractsList[dayOfWeek]) { 
+        const dayOfWeekArrayByTime = contractsList[dayOfWeek].map(contract => moment(contract.time,'h:ma'))
+        const indexForContract = dayOfWeekArrayByTime.findIndex(time => moment(contract.time,'h:ma').isBefore(time))
+        if (indexForContract > 0) {
+          contractsList[dayOfWeek].splice(indexForContract, contract)
+        } else {
+          contractsList[dayOfWeek].push(contract)
+        }
       } else {
-        contractsList[dayOfWeek] = [formattedContractInfo]
+        contractsList[dayOfWeek] = [contract]
       }
     })
     contractsList=Object.entries(contractsList)
-    console.log(contractsList)
     res.json(contractsList)
   })
 }

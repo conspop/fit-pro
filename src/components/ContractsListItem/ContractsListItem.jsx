@@ -12,6 +12,7 @@ function ContractsListItem({studio, style, time, classLength, rateType, rate}) {
             <td>{classLength}</td>
             <td>{rateType}</td>
             <td>{rate}</td>
+            <td><button>Edit</button></td>
           </tr>
         </tbody>
       </table>
