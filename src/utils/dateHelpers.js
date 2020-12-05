@@ -13,7 +13,3 @@ export function numToDay(dayNum) {
 
   return weekdays[dayNum]
 }
-
-export function getTime(date) {
-  return moment({h: date.hours(), m: date.minutes()})
-}
