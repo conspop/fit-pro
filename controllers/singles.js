@@ -1,4 +1,5 @@
 const Single = require('../models/single');
+const User = require('../models/user')
 
 module.exports = {
   create,
@@ -9,8 +10,8 @@ async function create(req, res) {
   try {
     await single.save();
     await User.findById(req.user._id, function(err, user){
-      user.singles = single._id
-      user.save()
+      user.singles.push(single._id); 
+      user.save();
     })
     res.json(single);
   } catch (err) {

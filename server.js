@@ -12,6 +12,7 @@ require('./config/database');
 
 var usersRouter = require('./routes/api/users');
 var contractsRouter = require('./routes/api/contracts')
+var schedulesRouter = require('./routes/api/schedules')
 var singlesRouter = require('./routes/api/singles')
 
 app.use(logger('dev'));
@@ -25,6 +26,7 @@ app.use('/api/users', usersRouter);
 //protected routes
 app.use(require('./config/auth'));
 app.use('/api/contracts', contractsRouter);
+app.use('/api/schedules', schedulesRouter);
 app.use('/api/singles', singlesRouter);
 
 app.get('/*', function(req, res) {

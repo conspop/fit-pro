@@ -46,8 +46,20 @@ async function getContracts() {
   .then(data => data)
 }
 
+async function getSchedule(startDate, endDate) {
+  return fetch(BASE_URL + 'schedules' + '?startDate=' + startDate.toISOString() + '&endDate=' + endDate.toISOString(), {
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    })
+  })
+  .then(res => res.json())
+  .then(data => data)
+}
+
 export default {
   addContract,
   addSingle,
-  getContracts
+  getContracts,
+  getSchedule
 }

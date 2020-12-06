@@ -5,20 +5,11 @@ import ('./DatePicker.css')
 const { RangePicker } = DatePickerComponent;
 
 class DatePicker extends React.Component {
-  state = {
-    startDate: '',
-    endDate: ''
-  }
-
   onChange = (dates) => {
-    console.log(dates)
-    this.setState({
-      startDate: dates[0],
-      endDate: dates[1]
-    })
+    this.props.handleDatesChange(dates)
   }
   
-  render() {
+  render(props) {
     return (
       <div className='component'>
         <div>
@@ -28,7 +19,7 @@ class DatePicker extends React.Component {
         <Space direction="vertical" size={12}>
           <RangePicker 
             onChange={this.onChange}
-            value={[this.state.startDate, this.state.endDate]}
+            value={[this.props.startDate, this.props.endDate]}
           />
         </Space>
         </div>
