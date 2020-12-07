@@ -1,0 +1,69 @@
+.add-item-form input {
+  width: 100%
+}
+
+.contract-single-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.date-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "start-date end-date";
+  margin-bottom: 5px;
+  column-gap:5px;
+}
+
+.start-date{
+  grid-area: start-date;
+}
+
+.end-date{
+  grid-area: end-date;
+}
+
+.time-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 
+  "time class-length";
+  column-gap:5px;
+}
+
+.time{
+  grid-area: time;
+}
+
+.class-length{
+  grid-area: class-length;
+}
+
+.rate-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  column-gap:5px;
+}
+
+.ant-picker, .ant-space {
+  width:100%;
+}
+
+.button-container {
+  width: 100%;
+  padding: 5px;
+}
+
+.add-button {
+  width: 100%;
+  height: 50px;
+  background-color: white;
+  border: 1px solid blue;
+  border-radius: 5px;
+
+}

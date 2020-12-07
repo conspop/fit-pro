@@ -5,7 +5,7 @@ import SchedulePage from './pages/SchedulePage/SchedulePage'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import ContractsPage from './pages/ContractsPage/ContractsPage';
-import AddItemModal from './components/AddItemModal/AddItemModal'
+import AddItemForm from './components/AddItemForm/AddItemForm'
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
@@ -63,7 +63,7 @@ class App extends Component {
           </Route>
           <Route exact path='/add'>
             <div>
-              <AddItemModal />
+              <AddItemForm />
             </div>
           </Route>
           <Footer />
