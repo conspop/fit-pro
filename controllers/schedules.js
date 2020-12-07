@@ -47,6 +47,11 @@ async function show(req, res) {
         date: dateInstance.clone(),
         contractId: _id
       }
+      if (contract.taught.includes(contractInstance.date.toDate())) {
+        contractInstance.status = 'taught';
+      } else if (contract.cancelled.includes(contractInstance.date.toDate())) {
+        contractInstance.status = 'cancelled';
+      }
       scheduleArray.push(contractInstance)
       dateInstance.add(7, 'days')
     }
@@ -56,8 +61,6 @@ async function show(req, res) {
   scheduleArray.sort((a, b) => {
     return moment(a.date).isBefore(moment(b.date)) ? -1 : 1
   })
-
-  console.log(scheduleArray)
 
   const numClasses = scheduleArray.length
   const projectedIncome = scheduleArray.reduce((sum, classInstance) => {
@@ -101,6 +104,8 @@ function getContracts(startDate, endDate, id) {
       match: {startDate: {$lte: endDate}}
     })
 }
+
+
 
 
 

@@ -11,7 +11,8 @@ const singleSchema = new Schema({
   rate: Number,
   base: Number,
   perHead: Number,
-  estimate: Number
+  estimate: Number,
+  taught: Boolean
 });
 
 module.exports = mongoose.model('Single', singleSchema);

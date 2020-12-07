@@ -20,6 +20,9 @@ function ClassList(props) {
                 rateType={`${listItem.rate ? 'Flat Rate' : 'Per Head'}`}
                 rate={`$${listItem.rate ? listItem.rate : (listItem.base + listItem.perHead * listItem.estimate)}`}
                 contract={listItem}
+                itemIdx={itemIdx}
+                dayIdx={dayIdx}
+                handleStatusChange={props.handleStatusChange}
               />
             )}
           </>

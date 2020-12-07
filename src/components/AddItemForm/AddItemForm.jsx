@@ -7,6 +7,7 @@ class AddItemForm extends Component {
   state = {
     isContract: false,
     isFlatRate: true,
+    isEndDate: false,
     studio:'',
     style:'',
     startDate:'',
@@ -24,6 +25,7 @@ class AddItemForm extends Component {
     this.setState({
       isContract: false,
       isFlatRate: true,
+      isEndDate: false,
       studio:'',
       style:'',
       startDate:'',
@@ -144,7 +146,7 @@ class AddItemForm extends Component {
             </div>  
             <div className='end-date'>
               <div>
-                End date
+                End date?
               </div>
               <div>
                 <Space direction="vertical">

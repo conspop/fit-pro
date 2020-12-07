@@ -12,7 +12,10 @@ const contractSchema = new Schema({
   rate: Number,
   base: Number,
   perHead: Number,
-  estimate: Number
+  estimate: Number,
+  taught: [String],
+  cancelled: [String]
+
 });
 
 module.exports = mongoose.model('Contract', contractSchema);

@@ -22,6 +22,10 @@ class  SchedulePage extends Component {
     })
   }
 
+  handleStatusChange = async (dayIdx, itemIdx, status) => {
+    console.log(dayIdx, itemIdx, status)
+  }
+
   componentDidMount = async () => {
     const {schedule, numClasses, projectedIncome} = await apiService.getSchedule(this.state.startDate, this.state.endDate)
     this.setState({schedule, numClasses, projectedIncome})
@@ -39,7 +43,12 @@ class  SchedulePage extends Component {
           numClasses={this.state.numClasses}
           projectedIncome={this.state.projectedIncome}
         />
-        {this.state.schedule !== '' ? <ClassList schedule={this.state.schedule} /> : ''}
+        {this.state.schedule !== '' ? 
+        <ClassList 
+          schedule={this.state.schedule} 
+          handleStatusChange={this.handleStatusChange}
+        /> : 
+        ''}
       </div>
     )
   }

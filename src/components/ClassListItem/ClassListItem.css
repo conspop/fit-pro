@@ -38,3 +38,25 @@
   justify-content: center;
   align-items: center;
 }
+
+i {
+  font-size: 1.5em;
+}
+
+.fa-check-circle {
+  color: green;
+}
+
+.fa-times-circle {
+  color: red;
+}
+
+button {
+  background-color: transparent;
+  border:none;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: none;
+}
