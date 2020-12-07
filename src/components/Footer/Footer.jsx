@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 function Footer() {
   return (
-    <div className='component flex-h bottom-nav'>
-      <div><Link to='/schedule'>Schedule</Link> / </div>
-      <div><Link to='/contracts'>Contracts</Link> / </div>
-      <div><Link to='/'>Invoices</Link> / </div>
-      <div><Link to='/add'>Quick Add</Link></div>
+    <div className='bottom-nav'>
+      <div className='bottom-nav-item'><Link to='/schedule'>Schedule</Link></div>
+      <div className='bottom-nav-item'><Link to='/contracts'>Contracts</Link></div>
+      <div className='bottom-nav-item'><Link to='/'>Invoices</Link></div>
+      <div className='bottom-nav-item'><Link to='/add'>Quick Add</Link></div>
     </div>
   )
 }

@@ -1,0 +1,40 @@
+.class-list-item {
+  display: grid;
+  grid-template-columns: 60% 20% 20%;
+  grid-template-rows: auto;
+  grid-template-areas: 
+    "style-and-studio taught cancel"
+    "time taught cancel"
+    "rate taught cancel";
+  padding: 5px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  margin:5px;
+}
+
+.style-and-studio {
+  grid-area: style-and-studio;
+  font-weight: 500;
+}
+
+.time {
+  grid-area: time;
+}
+
+.rate {
+  grid-area: rate;
+}
+
+.taught {
+  grid-area: taught;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cancel {
+  grid-area: cancel;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -2,10 +2,11 @@ import React from 'react'
 import ClassListDate from '../ClassListDate/ClassListDate'
 import ClassListItem from '../ClassListItem/ClassListItem'
 import moment from 'moment'
+import './ClassList.css'
 
 function ClassList(props) {
   return (
-    <div className='component'>
+    <div className='page-container list'>
       {props.schedule.map((listDay,dayIdx) => {
         return (
           <>

@@ -82,7 +82,6 @@ async function show(req, res) {
   schedule = Object.entries(schedule)
 
   res.json({schedule, numClasses, projectedIncome})
-
 }
 
 function getSingles(startDate, endDate, id) {

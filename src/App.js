@@ -30,7 +30,7 @@ class App extends Component {
 
     return (
       <Switch>
-        <>
+        <div className='app-body'>
           <Header 
             user={user} 
             handleLogout={this.handleLogout}
@@ -67,7 +67,7 @@ class App extends Component {
             </div>
           </Route>
           <Footer />
-        </>
+        </div>
       </Switch>
     )
   }

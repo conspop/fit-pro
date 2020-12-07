@@ -11,11 +11,11 @@ class DatePicker extends React.Component {
   
   render(props) {
     return (
-      <div className='component'>
-        <div>
+      <div className='page-container datepicker-container'>
+        <div className='datepicker-quick-dates-container'>
           Current / Previous / Custom
         </div>
-        <div>
+        <div className='datepicker-dates-container'>
         <Space direction="vertical" size={12}>
           <RangePicker 
             onChange={this.onChange}

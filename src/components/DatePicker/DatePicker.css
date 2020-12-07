@@ -17,3 +17,13 @@
 .ant-picker-footer-extra > div {
   flex-wrap: wrap !important; 
 }
+
+.datepicker-container {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.datepicker-quick-dates-container {
+  margin: 5px;
+}

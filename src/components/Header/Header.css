@@ -1,0 +1,11 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.header-logo {
+  font-weight: 700;
+}

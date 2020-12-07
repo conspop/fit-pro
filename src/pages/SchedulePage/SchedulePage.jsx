@@ -29,7 +29,7 @@ class  SchedulePage extends Component {
 
   render() {
     return (
-      <div className='component'>
+      <div>
         <DatePicker 
           handleDatesChange={this.handleDatesChange} 
           startDate={this.state.startDate}

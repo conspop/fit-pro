@@ -1,16 +1,11 @@
 import React from 'react'
+import './Stats.css'
 
 function Stats({numClasses, projectedIncome}) {
   return (
-    <div className='component flex-h'>
-      <div>
-        <div>Classes:</div>
-        <div>{numClasses}</div>
-      </div>
-      <div>
-        <div>Income:</div>
-        <div>${projectedIncome}</div>
-      </div>
+    <div className='page-container stats-grid'>
+      <div>Classes: {numClasses}</div>
+      <div>Income: ${projectedIncome}</div>
     </div>
   )
 }
