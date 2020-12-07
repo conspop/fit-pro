@@ -57,8 +57,19 @@ async function show(req, res) {
     return moment(a.date).isBefore(moment(b.date)) ? -1 : 1
   })
 
+  console.log(scheduleArray)
+
+  const numClasses = scheduleArray.length
+  const projectedIncome = scheduleArray.reduce((sum, classInstance) => {
+    if (classInstance.rate) {
+      return sum + classInstance.rate
+    } else {
+      return sum + (classInstance.base + classInstance.perHead * classInstance.estimate)
+    }
+  }, 0)
+
   // summarize schedule into dates
-  const schedule = {}
+  let schedule = {}
   scheduleArray.forEach(scheduleItem => {
     const date = moment(scheduleItem.date).format('dddd MMMM Do, YYYY')
     if (schedule[date]) {
@@ -68,7 +79,9 @@ async function show(req, res) {
     }
   })
 
-  res.json(schedule)
+  schedule = Object.entries(schedule)
+
+  res.json({schedule, numClasses, projectedIncome})
 
 }
 

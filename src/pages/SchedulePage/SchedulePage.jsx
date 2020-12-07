@@ -9,22 +9,22 @@ class  SchedulePage extends Component {
   state = {
     startDate: moment('12-1-20'),
     endDate: moment('12-31-20'),
-    schedule: ''
+    schedule: '',
+    numClasses: '',
+    projectedIncome: ''
   }
 
   handleDatesChange = async (dates) => {
     this.setState({
       startDate: dates[0],
       endDate: dates[1],
-      schedule: ''
+      schedule: await apiService.getSchedule(dates[0], dates[1])
     })
-    // const schedule = 
-    this.setState({schedule: await apiService.getSchedule(dates[0], dates[1])})
   }
 
   componentDidMount = async () => {
-    const schedule = await apiService.getSchedule(this.state.startDate, this.state.endDate)
-    this.setState({schedule: schedule})
+    const {schedule, numClasses, projectedIncome} = await apiService.getSchedule(this.state.startDate, this.state.endDate)
+    this.setState({schedule, numClasses, projectedIncome})
   }
 
   render() {
@@ -35,8 +35,11 @@ class  SchedulePage extends Component {
           startDate={this.state.startDate}
           endDate={this.state.endDate}
         />
-        <Stats />
-        <ClassList />
+        <Stats 
+          numClasses={this.state.numClasses}
+          projectedIncome={this.state.projectedIncome}
+        />
+        {this.state.schedule !== '' ? <ClassList schedule={this.state.schedule} /> : ''}
       </div>
     )
   }

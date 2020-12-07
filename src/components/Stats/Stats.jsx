@@ -1,15 +1,15 @@
 import React from 'react'
 
-function Stats() {
+function Stats({numClasses, projectedIncome}) {
   return (
     <div className='component flex-h'>
       <div>
         <div>Classes:</div>
-        <div>27</div>
+        <div>{numClasses}</div>
       </div>
       <div>
         <div>Income:</div>
-        <div>$150</div>
+        <div>${projectedIncome}</div>
       </div>
     </div>
   )

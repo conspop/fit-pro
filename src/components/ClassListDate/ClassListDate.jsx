@@ -1,9 +1,9 @@
 import React from 'react'
 
-function ClassListDate() {
+function ClassListDate({listDay}) {
   return (
     <div className='component'>
-      Tuesday December 1, 2020
+      {listDay}
     </div>
   )
 }
