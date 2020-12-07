@@ -71,6 +71,7 @@ class AddItemModal extends Component {
       delete details.date
       await apiService.addContract(details);
     } else {
+      console.log('single!')
       delete details.startDate
       delete details.endDate
       console.log('before single: ',details)
