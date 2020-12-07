@@ -1,21 +1,14 @@
 import React from 'react'
+import './ContractsListItem.css'
 
 function ContractsListItem({studio, style, time, classLength, rateType, rate}) {
   return (
-    <div className='component'>
-      <table>
-        <tbody>
-          <tr>
-            <td>{studio}</td>
-            <td>{style}</td>
-            <td>{time}</td>
-            <td>{classLength}</td>
-            <td>{rateType}</td>
-            <td>{rate}</td>
-            <td><button>Edit</button></td>
-          </tr>
-        </tbody>
-      </table>
+    <div className='class-list-item'>
+      <div className='style-and-studio'>{style} @ {studio}</div>
+      <div className='time'>{time}&nbsp;({classLength})</div>
+      <div className='rate'>{rateType} {rate}</div>
+      <div className='taught'>?</div>
+      <div className='cancel'>-</div>
     </div>
   )
 }

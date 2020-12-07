@@ -7,7 +7,7 @@ import moment from 'moment'
 function ContractsList(props) {  
     
   return (
-    <div className='component'>
+    <div className='page-container list'>
       {props.contractsList.map((listDay,dayIdx) => {
         return (
           <>
