@@ -1,29 +1,36 @@
-.ant-picker-panels > *:first-child button.ant-picker-header-next-btn {
-  visibility: visible !important;
-}
-
-.ant-picker-panels > *:first-child button.ant-picker-header-super-next-btn {
-  visibility: visible !important;
-}
-
-.ant-picker-panels > *:last-child {
-  display: none;
-}
-
-.ant-picker-panel-container, .ant-picker-footer {
-  width: 280px !important;
-}
-
-.ant-picker-footer-extra > div {
-  flex-wrap: wrap !important; 
-}
-
-.datepicker-container {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
+.add-button {
+  width: 100%;
+  height: 30px;
+  background-color: white;
+  border: 1px solid lightskyblue;
+  border-radius: 5px;
 }
 
 .datepicker-quick-dates-container {
-  margin: 5px;
+  font-weight: 500;
+  font-size: 1.2em;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.datepicker-dates-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+    "start end"
+    "button button";
+  column-gap: 5px;
+  row-gap: 5px;
+}
+
+.start {
+  grid-area: start;
+}
+
+.end {
+  grid-area: end;
+}
+
+.button {
+  grid-area: button;
 }

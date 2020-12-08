@@ -6,6 +6,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import ContractsPage from './pages/ContractsPage/ContractsPage';
 import AddItemForm from './components/AddItemForm/AddItemForm'
+import EditItemForm from './components/AddItemForm/AddItemForm'
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 
@@ -64,6 +65,11 @@ class App extends Component {
           <Route exact path='/add'>
             <div>
               <AddItemForm />
+            </div>
+          </Route>
+          <Route exact path='/edit'>
+            <div>
+              <EditItemForm />
             </div>
           </Route>
           <Footer />

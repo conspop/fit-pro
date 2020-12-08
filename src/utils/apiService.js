@@ -55,10 +55,13 @@ async function getSchedule(startDate, endDate) {
     })
   })
   .then(res => res.json())
-  .then(data => data)
+  .then(data => {
+    console.log(data)
+    return data
+  })
 }
 
-const changeStatus = (status, type, id, sch) => {
+const changeStatus = (status, type, id, date, sch) => {
   if (type === 'single') {
     try {
       fetch(BASE_URL + 'singles/changestatus', {
@@ -73,7 +76,6 @@ const changeStatus = (status, type, id, sch) => {
       .then(data => {console.log(data)})
     } 
     catch {
-      console.log(this.state)
       this.setState({schedule: sch})
     }
   } else {
@@ -84,7 +86,7 @@ const changeStatus = (status, type, id, sch) => {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + tokenService.getToken()
         }),
-        body: JSON.stringify({status, id})
+        body: JSON.stringify({status, id, date})
       })
       .then(res => res.json())
       .then(data => {console.log(data)})

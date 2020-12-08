@@ -22,7 +22,6 @@ async function create(req, res) {
 }
 
 async function changeStatus(req, res) {
-  console.log(req.body)
   const single = await Single.findById(req.body.id)
   if (req.body.status === 'taught') {
     single.status = 'taught'

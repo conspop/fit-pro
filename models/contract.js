@@ -13,8 +13,11 @@ const contractSchema = new Schema({
   base: Number,
   perHead: Number,
   estimate: Number,
-  taught: [Date],
-  cancelled: [Date]
+  specificDates: [{
+    date: Date,
+    status: String,
+    heads: Number
+  }]
 });
 
 module.exports = mongoose.model('Contract', contractSchema);

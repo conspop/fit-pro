@@ -7,22 +7,23 @@ import moment from 'moment'
 
 class  SchedulePage extends Component {
   state = {
-    startDate: moment('12-1-20'),
-    endDate: moment('12-31-20'),
+    startDate: moment().startOf('month'),
+    endDate: moment().endOf('month'),
     schedule: '',
     numClasses: '',
     projectedIncome: ''
   }
 
   handleDatesChange = async (dates) => {
+    const {schedule} = await apiService.getSchedule(dates[0], dates[1])
     this.setState({
       startDate: dates[0],
       endDate: dates[1],
-      schedule: await apiService.getSchedule(dates[0], dates[1])
+      schedule
     })
   }
 
-  handleStatusChange = async (dayIdx, itemIdx, type, id, status) => {
+  handleStatusChange = async (dayIdx, itemIdx, type, id, status, date, rate) => {
     let scheduleCopy = [...this.state.schedule]
     let scheduleOriginal = [...scheduleCopy]
     let scheduleDayCopy = [...scheduleCopy[dayIdx]]
@@ -32,7 +33,7 @@ class  SchedulePage extends Component {
     scheduleDayCopy[1] = scheduleDayItemCopy
     scheduleCopy[dayIdx] = scheduleDayCopy
     
-    this.setState({ schedule: scheduleCopy }, apiService.changeStatus(status, type, id, scheduleOriginal))
+    this.setState({ schedule: scheduleCopy }, apiService.changeStatus(status, type, id, date, scheduleOriginal))
   }
 
   componentDidMount = async () => {
@@ -49,13 +50,14 @@ class  SchedulePage extends Component {
           endDate={this.state.endDate}
         />
         <Stats 
-          numClasses={this.state.numClasses}
-          projectedIncome={this.state.projectedIncome}
+          schedule={this.state.schedule}
         />
         {this.state.schedule !== '' ? 
         <ClassList 
           schedule={this.state.schedule} 
           handleStatusChange={this.handleStatusChange}
+          startDate={this.state.startDate}
+          endDate={this.state.endDate}
         /> : 
         ''}
       </div>

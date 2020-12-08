@@ -5,6 +5,7 @@ import moment from 'moment'
 import './ClassList.css'
 
 function ClassList(props) {
+  console.log(props.schedule)
   return (
     <div className='page-container list'>
       {props.schedule.map((listDay,dayIdx) => {
@@ -18,8 +19,9 @@ function ClassList(props) {
                 time={moment(listItem.time).format('h:mma')}
                 classLength={`${listItem.classLength} min`}
                 rateType={`${listItem.rate ? 'Flat Rate' : 'Per Head'}`}
-                rate={`$${listItem.rate ? listItem.rate : (listItem.base + listItem.perHead * listItem.estimate)}`}
+                rate={`$${listItem.rate ? listItem.rate : (listItem.base + listItem.heads * listItem.perHead)}`}
                 contract={listItem}
+                status={listItem.status}
                 itemIdx={itemIdx}
                 dayIdx={dayIdx}
                 type={listItem.contractId ? 'contract' : 'single' }

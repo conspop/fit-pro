@@ -2,7 +2,6 @@ const moment = require('moment')
 const dateHelpers = require('../expressutils/dateHelpers')
 
 const User = require('../models/user');
-const Single = require('../models/single')
 
 module.exports = {
   show
@@ -33,8 +32,12 @@ async function show(req, res) {
     while (dateInstance.isBefore(timeframeStartDate)) {
       dateInstance.add(7, 'days')
     }
-    while (dateInstance.isBefore(timeframeEndDate)) {
-      const {studio, style, time, classLength, rate, base, perHead, estimate, _id} = contract
+    while (!dateInstance.isAfter(timeframeEndDate)) {
+      const {studio, style, time, classLength, rate, base, perHead, estimate, _id, specificDates} = contract
+      const foundDate = specificDates.find(specificDate => {
+        return moment(specificDate.date).isSame(moment(dateInstance))
+      }) 
+      const status = foundDate ? foundDate.status : 'nostatus'
       const contractInstance = {
         studio,
         style,
@@ -43,14 +46,10 @@ async function show(req, res) {
         rate,
         base,
         perHead,
-        estimate,
+        heads: specificDates.heads || estimate,
+        status,
         date: dateInstance.clone(),
         contractId: _id
-      }
-      if (contract.taught.includes(contractInstance.date.toDate())) {
-        contractInstance.status = 'taught';
-      } else if (contract.cancelled.includes(contractInstance.date.toDate())) {
-        contractInstance.status = 'cancelled';
       }
       scheduleArray.push(contractInstance)
       dateInstance.add(7, 'days')
@@ -64,10 +63,14 @@ async function show(req, res) {
 
   const numClasses = scheduleArray.length
   const projectedIncome = scheduleArray.reduce((sum, classInstance) => {
-    if (classInstance.rate) {
-      return sum + classInstance.rate
+    if (classInstance.status !== 'cancel') {
+      if (classInstance.rate) {
+        return sum + classInstance.rate
+      } else {
+        return sum + (classInstance.base + classInstance.perHead * classInstance.heads)
+      }
     } else {
-      return sum + (classInstance.base + classInstance.perHead * classInstance.estimate)
+      return sum
     }
   }, 0)
 
