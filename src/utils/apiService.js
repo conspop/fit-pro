@@ -57,9 +57,44 @@ async function getSchedule(startDate, endDate) {
   .then(data => data)
 }
 
+async function changeStatus(status, type, id) {
+  if (type === 'single') {
+    return fetch(BASE_URL + 'singles/changestatus', {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }),
+      body: JSON.stringify({status, id})
+    })
+    .then(res => {
+      // Valid login if we have a status of 2xx (res.ok)
+      if (res.ok) return res.json();
+      throw new Error('Bad Credentials!');
+    })
+  } else {
+    return fetch(BASE_URL + 'contracts/changestatus', {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }),
+      body: JSON.stringify({status, id})
+    })
+    .then(res => {
+      // Valid login if we have a status of 2xx (res.ok)
+      if (res.ok) return res.json();
+      throw new Error('Bad Credentials!');
+    })
+  }
+  
+  
+}
+
 export default {
   addContract,
   addSingle,
   getContracts,
-  getSchedule
+  getSchedule,
+  changeStatus
 }

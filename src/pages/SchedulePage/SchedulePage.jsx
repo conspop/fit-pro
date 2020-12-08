@@ -22,7 +22,7 @@ class  SchedulePage extends Component {
     })
   }
 
-  handleStatusChange = async (dayIdx, itemIdx, status) => {
+  handleStatusChange = async (dayIdx, itemIdx, type, id, status) => {
     let scheduleCopy = [...this.state.schedule]
     let scheduleDayCopy = [...scheduleCopy[dayIdx]]
     let scheduleDayItemCopy = [...scheduleDayCopy[1]]
@@ -31,7 +31,7 @@ class  SchedulePage extends Component {
     scheduleDayCopy[1] = scheduleDayItemCopy
     scheduleCopy[dayIdx] = scheduleDayCopy
     
-    this.setState({schedule: scheduleCopy})
+    this.setState({ schedule: scheduleCopy }, await apiService.changeStatus(status, type, id))
   }
 
   componentDidMount = async () => {

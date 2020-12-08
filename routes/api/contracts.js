@@ -6,4 +6,6 @@ router.get('/', contractsCtrl.index)
 
 router.post('/', contractsCtrl.create);
 
+router.put('/changestatus', contractsCtrl.changeStatus)
+
 module.exports = router;

@@ -11,16 +11,17 @@ class ClassListItem extends Component {
   }
 
   handleTaughtClick = (event) => {
-    
     this.props.handleStatusChange(
       event.currentTarget.dataset.dayidx,
       event.currentTarget.dataset.itemidx,
+      event.currentTarget.dataset.type,
+      event.currentTarget.dataset.id,
       event.currentTarget.dataset.status
     )
   }
   
   render() {
-    const {studio, style, time, classLength, rateType, rate, contract, dayIdx, itemIdx} = this.props
+    const {studio, style, time, classLength, rateType, rate, contract, dayIdx, itemIdx, type, id} = this.props
     return (
       <div 
         className='class-list-item'
@@ -33,6 +34,8 @@ class ClassListItem extends Component {
           className='taught'
           data-dayidx={dayIdx}
           data-itemidx={itemIdx}
+          data-type={type}
+          data-id={id}
           data-status='taught'
           onClick={this.handleTaughtClick}
         >
@@ -42,6 +45,8 @@ class ClassListItem extends Component {
           className='cancel'
           data-dayidx={dayIdx}
           data-itemidx={itemIdx}
+          data-type={type}
+          data-id={id}
           data-status='cancel'
           onClick={this.handleTaughtClick}
         >

@@ -12,7 +12,7 @@ const singleSchema = new Schema({
   base: Number,
   perHead: Number,
   estimate: Number,
-  taught: Boolean
+  status: String
 });
 
 module.exports = mongoose.model('Single', singleSchema);

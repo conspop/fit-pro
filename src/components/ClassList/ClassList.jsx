@@ -22,6 +22,8 @@ function ClassList(props) {
                 contract={listItem}
                 itemIdx={itemIdx}
                 dayIdx={dayIdx}
+                type={listItem.contractId ? 'contract' : 'single' }
+                id={listItem.contractId ? listItem.contractId : listItem._id}
                 handleStatusChange={props.handleStatusChange}
               />
             )}

@@ -6,7 +6,8 @@ const User = require('../models/user');
 
 module.exports = {
   create,
-  index
+  index,
+  changeStatus
 };
 
 async function create(req, res) {
@@ -48,4 +49,8 @@ async function index(req, res) {
     contractsList=Object.entries(contractsList)
     res.json(contractsList)
   })
+}
+
+async function changeStatus() {
+  pass
 }
