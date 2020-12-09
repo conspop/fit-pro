@@ -94,8 +94,8 @@ class AddItemForm extends Component {
     this.setState({endDate:date})
   }
 
-  handleTimeChange = (time) => {
-    this.setState({time:time})
+  handleTimeChange = (event) => {
+    this.setState({time:event.currentTarget.value})
   }
   
   render() {
@@ -103,14 +103,7 @@ class AddItemForm extends Component {
     return (
       <div className='add-item-form'>
 
-        <div className='page-container'>
-          <div>Studio</div>
-          <div><Input id='studio' value={studio} onChange={this.handleChange} /></div>
-          <div>Style</div>
-          <div><Input id='style' value={style} onChange={this.handleChange} /></div>
-        </div>
-
-        <div className='page-container'>
+      <div className='page-container'>
 
           <div className='contract-single-toggle'>
             <div 
@@ -129,7 +122,7 @@ class AddItemForm extends Component {
           </div>
 
           {isContract ?
-          
+
           <div className='date-selector'>
             <div className='start-date'>
               <div>
@@ -191,6 +184,13 @@ class AddItemForm extends Component {
                 value={time}
                 inputReadOnly={true}
               />
+              {/* <Input 
+                className='time-picker'
+                value={time} 
+                onChange={this.handleTimeChange} 
+                type='time'
+                step='900'
+              /> */}
             </div>
             <div className='class-length'>
               <div>Length:</div>
@@ -205,6 +205,15 @@ class AddItemForm extends Component {
             </div>
           </div>
         </div>
+
+        <div className='page-container'>
+          <div>Studio</div>
+          <div><Input id='studio' value={studio} onChange={this.handleChange} /></div>
+          <div>Style</div>
+          <div><Input id='style' value={style} onChange={this.handleChange} /></div>
+        </div>
+
+        
 
         <div className='page-container'>
           <div className='contract-single-toggle'>
