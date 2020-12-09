@@ -10,9 +10,9 @@ class ClassListItem extends Component {
   
   statusColor(status) {
     if (status === 'taught') {
-      return {backgroundColor: '#80C080'}
+      return {color: 'green'}
     } else if (status === 'cancel') {
-      return {backgroundColor: '#FF8080'}
+      return {color: 'red'}
     }
   }
 
