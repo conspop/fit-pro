@@ -29,14 +29,15 @@ class DatePicker extends React.Component {
   
   render(props) {
     return (
-      <div className='page-container datepicker-container'>
-        <div className='datepicker-quick-dates-container'>
-          Displaying {this.props.startDate.format('l')} to {this.props.endDate.format('l')}
-        </div>
-        <div>
-          <button onClick={this.handleOpenSelector}>Open</button> 
-        </div>
-        
+      <div className='page-container'>
+        <div className='date-display-container'>
+          <div className='date-display'>
+            {this.props.startDate.format('l')} to {this.props.endDate.format('l')}
+          </div>
+          <div>
+            <button onClick={this.handleOpenSelector}>Change</button> 
+          </div>
+        </div> 
         {this.state.showSelector ?
         <>
           <div className='datepicker-dates-container'>

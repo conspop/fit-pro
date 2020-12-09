@@ -6,10 +6,16 @@
   border-radius: 5px;
 }
 
-.datepicker-quick-dates-container {
+.date-display {
   font-weight: 500;
   font-size: 1.2em;
   text-align: center;
+}
+
+.date-display-container {
+  display:flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
   margin-bottom: 10px;
 }
 
