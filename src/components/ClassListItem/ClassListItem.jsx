@@ -1,11 +1,11 @@
 import {Component} from 'react'
 import './ClassListItem.css'
-import {Input} from 'antd'
+import {InputNumber, Input} from 'antd'
 
 class ClassListItem extends Component {
   state={
     showHeads: false,
-    heads: '',
+    heads: this.props.heads,
     message: ''
   }
   
@@ -89,9 +89,10 @@ class ClassListItem extends Component {
                   >
                     Confirm
                   </button>
-                  <Input 
+                  <Input
                     className='students-input' 
                     onChange={this.handleStudentsChange}
+                    autoFocus={true}
                   />
                   <button 
                     onClick={this.handleClick}

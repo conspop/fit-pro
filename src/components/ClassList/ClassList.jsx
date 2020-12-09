@@ -19,6 +19,7 @@ function ClassList(props) {
                 time={moment(listItem.time).format('h:mma')}
                 classLength={`${listItem.classLength} min`}
                 rateType={`${listItem.rate ? 'Flat Rate' : 'Per Head'}`}
+                heads={listItem.heads}
                 rate={
                   listItem.rate ?
                   `($${listItem.rate})` :
