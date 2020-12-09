@@ -189,6 +189,7 @@ class AddItemForm extends Component {
                 minuteStep={15}
                 onChange={this.handleTimeChange}
                 value={time}
+                inputReadOnly={true}
               />
             </div>
             <div className='class-length'>
