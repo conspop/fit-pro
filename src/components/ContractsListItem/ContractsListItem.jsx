@@ -148,8 +148,10 @@ class ContractsListItem extends Component {
                 Undo
               </button>
               <Input 
+                className='heads-input'
                 onChange={this.handleEstimateChange}
                 value={this.state.newEstimate}
+                autoFocus={true}
               />
               <button 
                 className='confirm-end-date'
