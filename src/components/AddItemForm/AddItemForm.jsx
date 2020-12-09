@@ -94,8 +94,8 @@ class AddItemForm extends Component {
     this.setState({endDate:date})
   }
 
-  handleTimeChange = (event) => {
-    this.setState({time:event.currentTarget.value})
+  handleTimeChange = (time) => {
+    this.setState({time:time})
   }
   
   render() {
@@ -184,13 +184,6 @@ class AddItemForm extends Component {
                 value={time}
                 inputReadOnly={true}
               />
-              {/* <Input 
-                className='time-picker'
-                value={time} 
-                onChange={this.handleTimeChange} 
-                type='time'
-                step='900'
-              /> */}
             </div>
             <div className='class-length'>
               <div>Length:</div>
