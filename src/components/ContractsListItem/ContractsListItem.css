@@ -4,14 +4,16 @@
   grid-template-rows: auto;
   grid-template-areas: 
   "message message"
-  "timeframe options"
   "style-and-studio options"
+  "timeframe options"
   "time options"
   "rate options";
-  padding: 5px;
-  border: 1px solid lightgrey;
+  padding: 10px;
+  border: 1px solid #7D898C;
   border-radius: 5px;
   margin: 5px 0;
+  background-color: #FDFAEC;
+  color: #303536;
 }
 
 .timeframe {
@@ -41,31 +43,31 @@
 }
 
 .end-date {
-  color: grey;
+  color: #303536;
 }
 
 .estimate {
-  color: grey;
+  color: #303536;
 }
 
 .delete {
-  color: red;
+  color: #DE4A3F;
 }
 
 .confirm {
-  color: green;
+  color: #4A8254;
 }
 
 .confirm-end-date {
-  color: green;
+  color: #4A8254;
 }
 
 .confirm-estimate {
-  color: green;
+  color: #4A8254;
 }
 
 .confirm-delete {
-  color: red;
+  color: #DE4A3F;
 }
 
 button {
@@ -80,7 +82,7 @@ button:focus {
 
 .message {
   grid-area: message;
-  color: blue;
+  color: #1769B;
   border-bottom: 1px solid lightgrey;
   text-align: center;
   padding-bottom: 5px;

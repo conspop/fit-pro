@@ -1,9 +1,9 @@
 @import '~antd/dist/antd.css';
 
 .app-body {
-  height: 100vh;
   display:grid;
   grid-template-rows: 10vh auto 10vh;
+  background-color: #0D3B66;
 }
 
 .flex-h {
@@ -20,13 +20,26 @@
 .page-container {
   padding: 10px;
   margin: 5px;
-  border: 1px solid lightgrey;
+  border: 1px solid #FDFAEC;
   border-radius: 5px;
   font-size: 16px;
+  background-color: #0D3B66;
+  color: #FDFAEC;
 }
 
 .page-container input {
   font-size: 16px;
+}
+
+.form {
+  border: none;
+}
+
+.form-child {
+  background-color:  #FDFAEC;
+  color: #303536;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .list {

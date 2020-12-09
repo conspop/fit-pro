@@ -4,13 +4,21 @@
   display:flex;
   width:100%;
   height: 10vh;
+  background-color: #7D898C;
 }
 
 .bottom-nav-item {
   width: 25%;
-  border: 1px solid lightgrey;
+  /* border-width: 4px 2px;
+  border-style: solid;
+  border-color: #0D3B66; */
   display:flex;
   justify-content: center;
   align-items: flex-start;
-  background-color: white;
+  background-color: #0D3B66;
+}
+
+.bottom-nav-item a {
+  color: #FDFAEC;
+  padding: 10px;
 }

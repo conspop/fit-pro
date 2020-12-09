@@ -3,11 +3,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 15px;
-  border-bottom: 1px solid lightgrey;
-  background-color: white;
+  background-color: #0D3B66;
+  color: #FDFAEC;
+  position: sticky;
+  top:0px;
 }
 
 .header-logo {
   font-weight: 700;
   font-size: 30px;
+}
+
+.header-container a {
+  color:#FDFAEC;
 }

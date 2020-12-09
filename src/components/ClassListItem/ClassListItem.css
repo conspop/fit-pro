@@ -8,10 +8,12 @@
     "time options"
     "type options"
     "rate options";
-  padding: 5px;
-  border: 1px solid lightgrey;
+  padding: 10px;
+  border: 1px solid #7D898C;
   border-radius: 5px;
   margin: 5px 0;
+  background-color: #FDFAEC;
+  color: #303536;
 }
 
 .style-and-studio {
@@ -41,27 +43,15 @@
 }
 
 .taught {
-  color: green
+  color: #4A8254;
 }
 
 .cancel {
-  color: red
+  color: #DE4A3F;
 }
 
 .nostatus {
-  color:black;
-}
-
-i {
-  font-size: 1.5em;
-}
-
-.fa-check-circle {
-  color: green;
-}
-
-.fa-times-circle {
-  color: red;
+  color:#303536;
 }
 
 button {
@@ -76,7 +66,7 @@ button:focus {
 
 .message {
   grid-area: message;
-  color: blue;
+  color: #1769B5;
   border-bottom: 1px solid lightgrey;
   text-align: center;
   padding-bottom: 5px;

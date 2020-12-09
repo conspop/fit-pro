@@ -8,7 +8,7 @@ function Footer() {
       <div className='bottom-nav-item'><Link to='/schedule'>Schedule</Link></div>
       <div className='bottom-nav-item'><Link to='/contracts'>Contracts</Link></div>
       <div className='bottom-nav-item'><Link to='/'>Invoices</Link></div>
-      <div className='bottom-nav-item'><Link to='/add'>Quick Add</Link></div>
+      <div className='bottom-nav-item'><Link to='/add'>Add</Link></div>
     </div>
   )
 }

@@ -103,7 +103,8 @@ class AddItemForm extends Component {
     return (
       <div className='add-item-form'>
 
-      <div className='page-container'>
+      <div className='page-container form'>
+
 
           <div className='contract-single-toggle'>
             <div 
@@ -121,6 +122,7 @@ class AddItemForm extends Component {
             </div>
           </div>
 
+        <div className='form-child'>
           {isContract ?
 
           <div className='date-selector'>
@@ -186,7 +188,7 @@ class AddItemForm extends Component {
               />
             </div>
             <div className='class-length'>
-              <div>Length:</div>
+              <div>Length</div>
               <div>
                 <Input 
                   id='classLength' 
@@ -198,86 +200,91 @@ class AddItemForm extends Component {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className='page-container'>
-          <div>Studio</div>
-          <div><Input id='studio' value={studio} onChange={this.handleChange} /></div>
-          <div>Style</div>
-          <div><Input id='style' value={style} onChange={this.handleChange} /></div>
+        <div className='page-container form'>
+          <div className='form-child details-section'>
+            <div>Studio</div>
+            <div>Style</div>
+            <div><Input id='studio' value={studio} onChange={this.handleChange} /></div>
+            <div><Input id='style' value={style} onChange={this.handleChange} /></div>
+          </div>
         </div>
 
         
 
-        <div className='page-container'>
-          <div className='contract-single-toggle'>
-            <div 
-              onClick={this.handleToggle}
-              style={this.state.isFlatRate ? {fontWeight:700} : {}}
-            >
-              Flat Rate
+        <div className='page-container form'>
+            <div className='contract-single-toggle'>
+              <div 
+                onClick={this.handleToggle}
+                style={this.state.isFlatRate ? {fontWeight:700} : {}}
+              >
+                Flat Rate
+              </div>
+              &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+              <div 
+                onClick={this.handleToggle}
+                style={!this.state.isFlatRate ? {fontWeight:700} : {}}
+              >
+                Per Head
+              </div>
             </div>
-            &nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-            <div 
-              onClick={this.handleToggle}
-              style={!this.state.isFlatRate ? {fontWeight:700} : {}}
-            >
-              Per Head
+          <div className='form-child'>
+            {isFlatRate ?
+            <div className='rate-selector'>
+              <div>
+                <div>Rate</div>
+                <div>
+                  <Input 
+                    id='rate' 
+                    value={rate} 
+                    onChange={this.handleChange} 
+                    inputmode='numeric'
+                  />
+                </div>
+              </div>
             </div>
+            :
+            <div className='rate-selector'>
+              <div>
+                <div>Base</div>
+                <div>
+                  <Input 
+                    id='base' 
+                    value={base} 
+                    onChange={this.handleChange} 
+                    inputmode='numeric'
+                  />
+                </div>
+              </div>
+              <div> 
+                <div>Per Head</div>
+                <div>
+                  <Input 
+                    id='perHead' 
+                    value={perHead} 
+                    onChange={this.handleChange} 
+                    inputmode='numeric'
+                  />
+                </div>
+              </div>
+              <div>   
+                <div>Estimate</div>
+                <div>
+                  <Input 
+                    id='estimate' 
+                    value={estimate} 
+                    onChange={this.handleChange} 
+                    inputmode='numeric'
+                  />
+                </div>
+              </div>
+            </div>
+            }
           </div>
-          {isFlatRate ?
-          <div className='rate-selector'>
-            <div>
-              <div>Rate</div>
-              <div>
-                <Input 
-                  id='rate' 
-                  value={rate} 
-                  onChange={this.handleChange} 
-                  inputmode='numeric'
-                />
-              </div>
-            </div>
-          </div>
-          :
-          <div className='rate-selector'>
-            <div>
-              <div>Base</div>
-              <div>
-                <Input 
-                  id='base' 
-                  value={base} 
-                  onChange={this.handleChange} 
-                  inputmode='numeric'
-                />
-              </div>
-            </div>
-            <div> 
-              <div>Per Head</div>
-              <div>
-                <Input 
-                  id='perHead' 
-                  value={perHead} 
-                  onChange={this.handleChange} 
-                  inputmode='numeric'
-                />
-              </div>
-            </div>
-            <div>   
-              <div>Estimate</div>
-              <div>
-                <Input 
-                  id='estimate' 
-                  value={estimate} 
-                  onChange={this.handleChange} 
-                  inputmode='numeric'
-                />
-              </div>
-            </div>
-          </div>
-          }
         </div>
         <div className='button-container'>
-          <button className='add-button' onClick={this.handleSubmit}>Add Contract</button>
+          <button className='add-button' onClick={this.handleSubmit}>Add</button>
         </div>
 
       </div>
