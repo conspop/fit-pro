@@ -5,7 +5,8 @@ import {Input} from 'antd'
 class ClassListItem extends Component {
   state={
     showHeads: false,
-    heads: ''
+    heads: '',
+    message: ''
   }
   
   statusColor(status) {
@@ -18,11 +19,11 @@ class ClassListItem extends Component {
 
   handleClick = async (event) => {
     if (event.currentTarget.dataset.status === 'taught' && !this.state.showHeads && this.props.rateType !== 'Flat Rate') {
-      this.setState({showHeads:true})
+      this.setState({showHeads:true, message:'This is a per head class. How many heads?'})
     } else if (event.currentTarget.id === 'undo') {
-      this.setState({showHeads:false, heads:''})
+      this.setState({showHeads:false, heads:'', message:''})
     } else {
-      this.setState({showHeads:false})
+      this.setState({showHeads:false, message:''})
       await this.props.handleStatusChange(
         event.currentTarget.dataset.dayidx,
         event.currentTarget.dataset.itemidx,
@@ -46,8 +47,14 @@ class ClassListItem extends Component {
         className='class-list-item'
         style={this.statusColor(status)}
       >
+        {
+          this.state.message ?
+          <div className='message'>{this.state.message}</div> :
+          ''
+        }
         <div className='style-and-studio'>{style} @ {studio}</div>
         <div className='time'>{time}&nbsp;({classLength})</div>
+        <div className='type'>{type === 'single' ? 'One Time' : 'Weekly'}</div>
         <div className='rate'>{rateType} {rate}</div>
         <div className='options'>
           {

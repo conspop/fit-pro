@@ -3,8 +3,10 @@
   grid-template-columns: 70% 30%;
   grid-template-rows: auto;
   grid-template-areas: 
+    "message message"
     "style-and-studio options"
     "time options"
+    "type options"
     "rate options";
   padding: 5px;
   border: 1px solid lightgrey;
@@ -12,9 +14,15 @@
   margin: 5px 0;
 }
 
+
+
 .style-and-studio {
   grid-area: style-and-studio;
   font-weight: 500;
+}
+
+.type {
+  grid-area: type;
 }
 
 .time {
@@ -72,6 +80,14 @@ button {
 button:focus {
   outline: none;
   box-shadow: none;
+}
+
+.message {
+  grid-area: message;
+  color: blue;
+  border-bottom: 1px solid lightgrey;
+  text-align: center;
+
 }
 
 

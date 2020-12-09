@@ -16,10 +16,10 @@
   display:flex;
   justify-content: space-evenly;
   align-items: baseline;
-  margin-bottom: 10px;
 }
 
 .datepicker-dates-container {
+  margin-top: 10px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: 
@@ -27,6 +27,8 @@
     "button button";
   column-gap: 5px;
   row-gap: 5px;
+  border-top: 1px solid lightgrey;
+  padding-top: 20px;
 }
 
 .start {

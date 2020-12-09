@@ -36,6 +36,10 @@ async function changeStatus(req, res) {
     single.status = 'cancel'
     single.save()
     res.json(single)
+  } else if (req.body.status === 'nostatus') {
+    single.status = 'nostatus'
+    single.save()
+    res.json(single)
   } else {
     res.json('something went wrong!')
   }
