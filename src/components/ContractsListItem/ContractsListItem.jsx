@@ -149,6 +149,7 @@ class ContractsListItem extends Component {
                   suffixIcon={''}
                   open={this.state.openCalendar}
                   format={dateFormat}
+                  inputReadOnly={true}
                 />
               </Space>
               <button 
@@ -175,6 +176,7 @@ class ContractsListItem extends Component {
                 onChange={this.handleEstimateChange}
                 value={this.state.newEstimate}
                 autoFocus={true}
+                inputmode='numeric'
               />
               <button 
                 className='confirm-estimate'

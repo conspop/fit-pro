@@ -140,6 +140,7 @@ class AddItemForm extends Component {
                   <DatePicker
                     onChange={this.handleStartDateChange} 
                     value={startDate}
+                    inputReadOnly={true}
                   />
                 </Space>
               </div>
@@ -153,6 +154,7 @@ class AddItemForm extends Component {
                   <DatePicker 
                     onChange={this.handleEndDateChange} 
                     value={endDate}
+                    inputReadOnly={true}
                   />
                 </Space>
               </div>
@@ -169,6 +171,7 @@ class AddItemForm extends Component {
                   <DatePicker 
                     onChange={this.handleDateChange} 
                     value={date}
+                    inputReadOnly={true}
                   />
                 </Space>
               </div>
@@ -190,7 +193,14 @@ class AddItemForm extends Component {
             </div>
             <div className='class-length'>
               <div>Length:</div>
-              <div><Input id='classLength' value={classLength} onChange={this.handleChange} /></div>
+              <div>
+                <Input 
+                  id='classLength' 
+                  value={classLength} 
+                  onChange={this.handleChange} 
+                  inputmode='numeric'
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -215,22 +225,50 @@ class AddItemForm extends Component {
           <div className='rate-selector'>
             <div>
               <div>Rate</div>
-              <div><Input id='rate' value={rate} onChange={this.handleChange} /></div>
+              <div>
+                <Input 
+                  id='rate' 
+                  value={rate} 
+                  onChange={this.handleChange} 
+                  inputmode='numeric'
+                />
+              </div>
             </div>
           </div>
           :
           <div className='rate-selector'>
             <div>
               <div>Base</div>
-              <div><Input id='base' value={base} onChange={this.handleChange} /></div>
+              <div>
+                <Input 
+                  id='base' 
+                  value={base} 
+                  onChange={this.handleChange} 
+                  inputmode='numeric'
+                />
+              </div>
             </div>
             <div> 
               <div>Per Head</div>
-              <div><Input id='perHead' value={perHead} onChange={this.handleChange} /></div>
+              <div>
+                <Input 
+                  id='perHead' 
+                  value={perHead} 
+                  onChange={this.handleChange} 
+                  inputmode='numeric'
+                />
+              </div>
             </div>
             <div>   
               <div>Estimate</div>
-              <div><Input id='estimate' value={estimate} onChange={this.handleChange} /></div>
+              <div>
+                <Input 
+                  id='estimate' 
+                  value={estimate} 
+                  onChange={this.handleChange} 
+                  inputmode='numeric'
+                />
+              </div>
             </div>
           </div>
           }

@@ -36,8 +36,8 @@ class ClassListItem extends Component {
     }
   }
 
-  handleStudentsChange = (value) => {
-    this.setState({heads: value})
+  handleStudentsChange = (event) => {
+    this.setState({heads: event.currentTarget.value})
   }
   
   render() {

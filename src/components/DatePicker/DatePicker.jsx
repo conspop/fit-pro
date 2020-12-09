@@ -51,6 +51,7 @@ class DatePicker extends React.Component {
                   id='inputStart'
                   value={moment(this.state.inputStart)}
                   allowClear={false}
+                  inputReadOnly={true}
                 />
               </Space>
             </div>
@@ -64,6 +65,7 @@ class DatePicker extends React.Component {
                   id='inputEnd'
                   value={moment(this.state.inputEnd)}
                   allowClear={false}
+                  inputReadOnly={true}
                 />
               </Space>
             </div>
