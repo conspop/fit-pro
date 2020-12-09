@@ -85,7 +85,7 @@ button:focus {
   color: blue;
   border-bottom: 1px solid lightgrey;
   text-align: center;
-
+  padding-bottom: 5px;
 }
 
 
