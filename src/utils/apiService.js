@@ -115,11 +115,30 @@ const updateContract = (contractId, type, value, old) => {
   }
 }
 
+const deleteContract = (contractId, old) => {
+  try {
+    fetch(BASE_URL + 'contracts/deletecontract', {
+      method: 'DELETE',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }),
+      body: JSON.stringify({contractId})
+    })
+    .then(res => res.json())
+    .then(data => {console.log(data)})
+  } 
+  catch {
+    this.setState({contractsList: old})
+  }
+}
+
 export default {
   addContract,
   addSingle,
   getContracts,
   getSchedule,
   changeStatus,
-  updateContract
+  updateContract,
+  deleteContract
 }

@@ -3,12 +3,14 @@ const dateHelpers = require('../expressutils/dateHelpers')
 
 const Contract = require('../models/contract');
 const User = require('../models/user');
+const Single = require('../models/single');
 
 module.exports = {
   create,
   index,
   changeStatus,
-  updateContract
+  updateContract,
+  deleteContract
 };
 
 async function create(req, res) {
@@ -78,7 +80,6 @@ async function changeStatus(req, res) {
 
 async function updateContract(req, res) {
   const contract = await Contract.findById(req.body.contractId)
-  console.log(req.body.type)
   if (req.body.type === 'confirm-end-date') {
     contract.endDate = req.body.value
   } else if (req.body.type === 'confirm-estimate') {
@@ -87,7 +88,31 @@ async function updateContract(req, res) {
   } else {
     console.log('something went wrong!')
   }
-  console.log(contract)
   contract.save()
   res.json(contract)
+}
+
+async function deleteContract(req, res) {
+  const contract = await Contract.findById(req.body.contractId)
+  const {studio, style, time, classLength, rate, base, perHead, estimate, specificDates} = contract
+  const user = await User.findById(req.user._id)
+  console.log(user)
+  specificDates.forEach(specificDate => {
+    newSingle = new Single({
+      studio,
+      style,
+      date: specificDate.date,
+      time,
+      classLength,
+      rate,
+      base,
+      perHead,
+      heads: specificDate.heads || estimate,
+      status: specificDate.status
+    })
+    newSingle.save()
+    user.singles.push(newSingle._id)
+  })
+  user.save()
+  await Contract.findByIdAndDelete(req.body.contractId)
 }

@@ -28,6 +28,7 @@ function ContractsList(props) {
                 }
                 contract={listItem}
                 handleUpdateContract={props.handleUpdateContract}
+                handleDeleteContract={props.handleDeleteContract}
               />
             )}
           </>

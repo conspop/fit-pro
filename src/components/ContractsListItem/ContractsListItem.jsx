@@ -65,6 +65,12 @@ class ContractsListItem extends Component {
         this.props.dayIdx, 
         this.props.itemIdx 
       )
+    } else if (buttonClicked === 'confirm-delete') {
+      this.props.handleDeleteContract(
+        this.props.contract._id, 
+        this.props.dayIdx, 
+        this.props.itemIdx 
+      )
     }
   }
 

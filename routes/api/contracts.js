@@ -9,4 +9,6 @@ router.post('/', contractsCtrl.create);
 router.put('/changestatus', contractsCtrl.changeStatus)
 router.put('/updatecontract', contractsCtrl.updateContract)
 
+router.delete('/deletecontract', contractsCtrl.deleteContract)
+
 module.exports = router;

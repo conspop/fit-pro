@@ -31,6 +31,21 @@ class ContractsPage extends Component {
 
     this.setState({contractsList: contractsListCopy}, apiService.updateContract(contractId, type, value, contractsListOriginal))
   }
+
+  handleDeleteContract = (contractId, dayIdx, itemIdx) => {
+    let contractsListCopy = [...this.state.contractsList]
+    let contractsListOriginal = [...contractsListCopy]
+    let contractsListDayCopy = [...contractsListCopy[dayIdx]]
+    let contractsListDayItemCopy = [...contractsListDayCopy[1]]
+    
+    contractsListDayItemCopy.splice(itemIdx,1)
+
+    contractsListDayCopy[1] = contractsListDayItemCopy
+    contractsListCopy[dayIdx] = contractsListDayCopy
+
+    this.setState({contractsList: contractsListCopy}, apiService.deleteContract(contractId, contractsListOriginal))
+
+  }
   
   render() {
     return (
@@ -41,6 +56,7 @@ class ContractsPage extends Component {
           <ContractsList 
             contractsList={this.state.contractsList} 
             handleUpdateContract={this.handleUpdateContract}
+            handleDeleteContract={this.handleDeleteContract}
           /> : ''
            }
         </div>
