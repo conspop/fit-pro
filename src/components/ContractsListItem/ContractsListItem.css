@@ -1,15 +1,20 @@
 .contract-list-item {
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 70% 30%;
   grid-template-rows: auto;
   grid-template-areas: 
+  "timeframe options"
   "style-and-studio options"
   "time options"
   "rate options";
   padding: 5px;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  margin:5px 0;
+  margin: 5px 0;
+}
+
+.timeframe {
+  grid-area: timeframe;
 }
 
 .style-and-studio {
@@ -25,7 +30,16 @@
   grid-area: rate;
 }
 
-.cancel {
+.options {
+  grid-area: options;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-evenly;
+  align-items: center;
+  border-left: 1px solid lightgrey;
+}
+
+.delete {
   color: red
 }
 

@@ -5,7 +5,7 @@ import './ContractsListDate.css'
 function ContractsListDate({listDay}) {
   return (
     <div className='contractslist-date'>
-      {numToDay(listDay)}
+      {numToDay(listDay)}s
     </div>
   )
 }

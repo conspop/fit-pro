@@ -14,9 +14,12 @@ class ContractsPage extends Component {
   
   render() {
     return (
-      <div>
-        {this.state.contractsList !== '' ? <ContractsList contractsList={this.state.contractsList} /> : ''}
-      </div>
+      <>
+        <div className='page-container'>Active, Inactive, All contracts</div>
+        <div>
+          {this.state.contractsList !== '' ? <ContractsList contractsList={this.state.contractsList} /> : ''}
+        </div>
+      </>
     )
   }
 }
