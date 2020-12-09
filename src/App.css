@@ -29,6 +29,7 @@
 
 .page-container input {
   font-size: 16px;
+  background-color: #EAECEA;
 }
 
 .form {
@@ -45,6 +46,10 @@
 .list {
   border: none;
   margin-bottom: 10vh;
+}
+
+input {
+  background-color: #DFE2DF;
 }
 
 

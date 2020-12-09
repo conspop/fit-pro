@@ -40,7 +40,7 @@ class DatePicker extends React.Component {
         </div> 
         {this.state.showSelector ?
         <>
-          <div className='datepicker-dates-container'>
+          <div className='datepicker-dates-container form-child'>
             <div className='start'>
               <div>
                 Start Date
@@ -69,7 +69,8 @@ class DatePicker extends React.Component {
                 />
               </Space>
             </div>
-            <div className='button'>
+          </div>
+            <div className='button-container'>
               <button
                 className='add-button'
                 onClick={this.handleUpdateDates}
@@ -77,7 +78,6 @@ class DatePicker extends React.Component {
                 Update
               </button>
             </div>
-          </div>
         </>
         :
         <>

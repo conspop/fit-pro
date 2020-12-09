@@ -59,6 +59,7 @@
 
 .ant-picker, .ant-space {
   width:100%;
+  background-color: #EAECEA;
 }
 
 .ant-picker-time-panel {
