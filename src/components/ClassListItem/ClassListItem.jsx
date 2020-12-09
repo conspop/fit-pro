@@ -89,11 +89,11 @@ class ClassListItem extends Component {
                   >
                     Confirm
                   </button>
-                  <InputNumber
+                  <Input
                     className='students-input' 
                     onChange={this.handleStudentsChange}
                     autoFocus={true}
-                    pattern="[0-9]*"
+                    inputmode='numeric'
                   />
                   <button 
                     onClick={this.handleClick}
