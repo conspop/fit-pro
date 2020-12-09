@@ -1,7 +1,13 @@
 import {Component} from 'react'
 import './ClassListItem.css'
+import {Input} from 'antd'
 
 class ClassListItem extends Component {
+  state={
+    showHeads: false,
+    heads: ''
+  }
+  
   statusColor(status) {
     if (status === 'taught') {
       return {backgroundColor: '#80C080'}
@@ -10,16 +16,27 @@ class ClassListItem extends Component {
     }
   }
 
-  handleTaughtClick = async (event) => {
-    await this.props.handleStatusChange(
-      event.currentTarget.dataset.dayidx,
-      event.currentTarget.dataset.itemidx,
-      event.currentTarget.dataset.type,
-      event.currentTarget.dataset.id,
-      event.currentTarget.dataset.status,
-      event.currentTarget.dataset.date,
-      event.currentTarget.dataset.rate
-    )
+  handleClick = async (event) => {
+    if (event.currentTarget.dataset.status === 'taught' && !this.state.showHeads && this.props.rateType !== 'Flat Rate') {
+      this.setState({showHeads:true})
+    } else if (event.currentTarget.id === 'undo') {
+      this.setState({showHeads:false, heads:''})
+    } else {
+      this.setState({showHeads:false})
+      await this.props.handleStatusChange(
+        event.currentTarget.dataset.dayidx,
+        event.currentTarget.dataset.itemidx,
+        event.currentTarget.dataset.type,
+        event.currentTarget.dataset.id,
+        event.currentTarget.dataset.status,
+        event.currentTarget.dataset.date,
+        this.state.heads
+      )
+    }
+  }
+
+  handleStudentsChange = (event) => {
+    this.setState({heads: event.target.value})
   }
   
   render() {
@@ -44,36 +61,66 @@ class ClassListItem extends Component {
                 data-status='nostatus'
                 data-date={contract.date}
                 data-rate={rate}
-                onClick={this.handleTaughtClick}
+                onClick={this.handleClick}
               >
                 Undo
             </button>
             :
-            <>  
-              <button
-                className='taught'
-                data-dayidx={dayIdx}
-                data-itemidx={itemIdx}
-                data-type={type}
-                data-id={id}
-                data-status='taught'
-                data-date={contract.date}
-                onClick={this.handleTaughtClick}
-              >
-                Taught
-              </button>
-              <button
-                className='cancel'
-                data-dayidx={dayIdx}
-                data-itemidx={itemIdx}
-                data-type={type}
-                data-id={id}
-                data-status='cancel'
-                data-date={contract.date}
-                onClick={this.handleTaughtClick}
-              >
-                Cancelled
-              </button>
+            <>
+              {
+                this.state.showHeads ?
+                <>
+                  <button
+                    className='taught'
+                    data-dayidx={dayIdx}
+                    data-itemidx={itemIdx}
+                    data-type={type}
+                    data-id={id}
+                    data-status='taught'
+                    data-date={contract.date}
+                    onClick={this.handleClick}
+                  >
+                    Confirm
+                  </button>
+                  <Input 
+                    className='students-input' 
+                    onChange={this.handleStudentsChange}
+                  />
+                  <button 
+                    onClick={this.handleClick}
+                    id='undo'
+                  >
+                    Undo
+                  </button>
+                </>
+                :
+                <>
+                  <button
+                    className='taught'
+                    data-dayidx={dayIdx}
+                    data-itemidx={itemIdx}
+                    data-type={type}
+                    data-id={id}
+                    data-status='taught'
+                    data-date={contract.date}
+                    onClick={this.handleClick}
+                  >
+                    Taught
+                  </button>
+                  <button
+                  className='cancel'
+                  data-dayidx={dayIdx}
+                  data-itemidx={itemIdx}
+                  data-type={type}
+                  data-id={id}
+                  data-status='cancel'
+                  data-date={contract.date}
+                  onClick={this.handleClick}
+                  >
+                    Cancelled
+                  </button>
+                </>
+              }  
             </>
           }
         </div>

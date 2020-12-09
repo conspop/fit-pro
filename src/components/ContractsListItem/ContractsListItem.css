@@ -3,13 +3,13 @@
   grid-template-columns: 60% 20% 20%;
   grid-template-rows: auto;
   grid-template-areas: 
-    "style-and-studio taught cancel"
-    "time taught cancel"
-    "rate taught cancel";
+  "style-and-studio options"
+  "time options"
+  "rate options";
   padding: 5px;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  margin:5px;
+  margin:5px 0;
 }
 
 .style-and-studio {
@@ -25,18 +25,8 @@
   grid-area: rate;
 }
 
-.edit {
-  grid-area: taught;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .cancel {
-  grid-area: cancel;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: red
 }
 
 i {

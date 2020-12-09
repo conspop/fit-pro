@@ -25,6 +25,11 @@ async function changeStatus(req, res) {
   const single = await Single.findById(req.body.id)
   if (req.body.status === 'taught') {
     single.status = 'taught'
+    console.log(req.body.heads)
+    if (req.body.heads) {
+      single.heads = req.body.heads
+    }
+    console.log(single)
     single.save()
     res.json(single)
   } else if (req.body.status === 'cancel') {

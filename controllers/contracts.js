@@ -54,17 +54,22 @@ async function index(req, res) {
 async function changeStatus(req, res) {
   const contract = await Contract.findById(req.body.id)
   const {specificDates} = contract
-  console.log(req.body.date)
   const index = specificDates.findIndex(specificDate => {
     return moment(req.body.date).isSame(moment(specificDate.date))
   })
   if (index >= 0) {
     specificDates[index].status = req.body.status
+    if (req.body.heads) {
+      specificDates[index].heads = req.body.heads
+    }
   } else {
-    specificDates.push({
-      date: req.body.date,
-      status: req.body.status
-    }) 
+    specificDatesObj = {}
+    specificDatesObj.date = req.body.date
+    specificDatesObj.status = req.body.status
+    if (req.body.heads) {
+      specificDatesObj.heads = req.body.heads
+    }
+    specificDates.push(specificDatesObj) 
   }
   contract.save()
   res.json(specificDates)

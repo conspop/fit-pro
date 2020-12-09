@@ -9,7 +9,7 @@
   padding: 5px;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  margin:5px;
+  margin: 5px 0;
 }
 
 .style-and-studio {
@@ -30,6 +30,12 @@
   display: flex;
   flex-direction: column-reverse;
   align-items: flex-end;
+}
+
+.students-input {
+  width: 50%;
+  height: 25px;
+  text-align: center;
 }
 
 .taught {

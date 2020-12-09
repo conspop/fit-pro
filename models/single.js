@@ -11,7 +11,7 @@ const singleSchema = new Schema({
   rate: Number,
   base: Number,
   perHead: Number,
-  estimate: Number,
+  heads: Number,
   status: String
 });
 
