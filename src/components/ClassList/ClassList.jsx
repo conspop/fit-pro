@@ -19,7 +19,11 @@ function ClassList(props) {
                 time={moment(listItem.time).format('h:mma')}
                 classLength={`${listItem.classLength} min`}
                 rateType={`${listItem.rate ? 'Flat Rate' : 'Per Head'}`}
-                rate={`$${listItem.rate ? listItem.rate : (listItem.base + listItem.heads * listItem.perHead)}`}
+                rate={
+                  listItem.rate ?
+                  `($${listItem.rate})` :
+                  `($${listItem.base}+$${listItem.perHead}x${listItem.heads}=$${listItem.base+listItem.perHead*listItem.heads})`
+                }
                 contract={listItem}
                 status={listItem.status}
                 itemIdx={itemIdx}

@@ -32,49 +32,51 @@ class ClassListItem extends Component {
         <div className='style-and-studio'>{style} @ {studio}</div>
         <div className='time'>{time}&nbsp;({classLength})</div>
         <div className='rate'>{rateType} {rate}</div>
-        {
-          status === 'taught' || status === 'cancel' ?
-          <button
-              className='cancel nostatus'
-              data-dayidx={dayIdx}
-              data-itemidx={itemIdx}
-              data-type={type}
-              data-id={id}
-              data-status='nostatus'
-              data-date={contract.date}
-              data-rate={rate}
-              onClick={this.handleTaughtClick}
-            >
-              <i class="far fa-dot-circle"></i>
-          </button>
-          :
-          <>  
+        <div className='options'>
+          {
+            status === 'taught' || status === 'cancel' ?
             <button
-              className='taught'
-              data-dayidx={dayIdx}
-              data-itemidx={itemIdx}
-              data-type={type}
-              data-id={id}
-              data-status='taught'
-              data-date={contract.date}
-              onClick={this.handleTaughtClick}
-            >
-              <i class="far fa-check-circle"></i>
+                className='nostatus'
+                data-dayidx={dayIdx}
+                data-itemidx={itemIdx}
+                data-type={type}
+                data-id={id}
+                data-status='nostatus'
+                data-date={contract.date}
+                data-rate={rate}
+                onClick={this.handleTaughtClick}
+              >
+                Undo
             </button>
-            <button
-              className='cancel'
-              data-dayidx={dayIdx}
-              data-itemidx={itemIdx}
-              data-type={type}
-              data-id={id}
-              data-status='cancel'
-              data-date={contract.date}
-              onClick={this.handleTaughtClick}
-            >
-              <i class="far fa-times-circle"></i>
-            </button>
-          </>
-        }
+            :
+            <>  
+              <button
+                className='taught'
+                data-dayidx={dayIdx}
+                data-itemidx={itemIdx}
+                data-type={type}
+                data-id={id}
+                data-status='taught'
+                data-date={contract.date}
+                onClick={this.handleTaughtClick}
+              >
+                Taught
+              </button>
+              <button
+                className='cancel'
+                data-dayidx={dayIdx}
+                data-itemidx={itemIdx}
+                data-type={type}
+                data-id={id}
+                data-status='cancel'
+                data-date={contract.date}
+                onClick={this.handleTaughtClick}
+              >
+                Cancelled
+              </button>
+            </>
+          }
+        </div>
         
       </div>
     )

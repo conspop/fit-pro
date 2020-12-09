@@ -1,11 +1,11 @@
 .class-list-item {
   display: grid;
-  grid-template-columns: 60% 20% 20%;
+  grid-template-columns: 60% 40%;
   grid-template-rows: auto;
   grid-template-areas: 
-    "style-and-studio taught cancel"
-    "time taught cancel"
-    "rate taught cancel";
+    "style-and-studio options"
+    "time options"
+    "rate options";
   padding: 5px;
   border: 1px solid lightgrey;
   border-radius: 5px;
@@ -25,18 +25,19 @@
   grid-area: rate;
 }
 
-.taught {
-  grid-area: taught;
+.options {
+  grid-area: options;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+}
+
+.taught {
+  color: green
 }
 
 .cancel {
-  grid-area: cancel;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: red
 }
 
 i {
