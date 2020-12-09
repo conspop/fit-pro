@@ -93,6 +93,7 @@ class ClassListItem extends Component {
                     className='students-input' 
                     onChange={this.handleStudentsChange}
                     autoFocus={true}
+                    pattern="[0-9]*"
                   />
                   <button 
                     onClick={this.handleClick}

@@ -96,7 +96,6 @@ async function deleteContract(req, res) {
   const contract = await Contract.findById(req.body.contractId)
   const {studio, style, time, classLength, rate, base, perHead, estimate, specificDates} = contract
   const user = await User.findById(req.user._id)
-  console.log(user)
   specificDates.forEach(specificDate => {
     newSingle = new Single({
       studio,
