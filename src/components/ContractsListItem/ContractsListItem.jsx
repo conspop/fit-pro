@@ -48,6 +48,23 @@ class ContractsListItem extends Component {
         showOptions: false,
         showConfirmDelete: true,
       })
+    } else if (buttonClicked === 'confirm-end-date') {
+      console.log('process started')
+      this.props.handleUpdateContract(
+        this.props.contract._id, 
+        'confirm-end-date', 
+        this.state.newEndDate, 
+        this.props.dayIdx, 
+        this.props.itemIdx 
+      )
+    } else if (buttonClicked === 'confirm-estimate') {
+      this.props.handleUpdateContract(
+        this.props.contract._id, 
+        'confirm-estimate', 
+        this.state.newEstimate, 
+        this.props.dayIdx, 
+        this.props.itemIdx 
+      )
     }
   }
 
@@ -114,7 +131,7 @@ class ContractsListItem extends Component {
                 className='undo'
                 onClick={this.handleClick}
               >
-                Undo
+                Back
               </button>
               <Space direction="vertical" size={12}>
                 <DatePicker
@@ -145,7 +162,7 @@ class ContractsListItem extends Component {
                 className='undo'
                 onClick={this.handleClick}
               >
-                Undo
+                Back
               </button>
               <Input 
                 className='heads-input'
@@ -154,7 +171,7 @@ class ContractsListItem extends Component {
                 autoFocus={true}
               />
               <button 
-                className='confirm-end-date'
+                className='confirm-estimate'
                 onClick={this.handleClick}
               >
                 Confirm
@@ -170,13 +187,13 @@ class ContractsListItem extends Component {
                 className='undo'
                 onClick={this.handleClick}
               >
-                Undo
+                Back
               </button>
               <button 
-                className='confirm-end-date'
+                className='confirm-delete'
                 onClick={this.handleClick}
               >
-                Confirm
+                Confirm Delete
               </button>
             </>
             :

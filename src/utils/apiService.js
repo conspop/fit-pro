@@ -97,10 +97,29 @@ const changeStatus = (status, type, id, date, sch, heads) => {
   }
 }
 
+const updateContract = (contractId, type, value, old) => {
+  try {
+    fetch(BASE_URL + 'contracts/updatecontract', {
+      method: 'PUT',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + tokenService.getToken()
+      }),
+      body: JSON.stringify({contractId, type, value})
+    })
+    .then(res => res.json())
+    .then(data => {console.log(data)})
+  } 
+  catch {
+    this.setState({contractsList: old})
+  }
+}
+
 export default {
   addContract,
   addSingle,
   getContracts,
   getSchedule,
-  changeStatus
+  changeStatus,
+  updateContract
 }

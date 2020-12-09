@@ -7,5 +7,6 @@ router.get('/', contractsCtrl.index)
 router.post('/', contractsCtrl.create);
 
 router.put('/changestatus', contractsCtrl.changeStatus)
+router.put('/updatecontract', contractsCtrl.updateContract)
 
 module.exports = router;

@@ -11,13 +11,38 @@ class ContractsPage extends Component {
     const contractsList = await apiService.getContracts();
     this.setState({contractsList: contractsList})
   }
+
+  handleUpdateContract = (contractId, type, value, dayIdx, itemIdx) => {
+    let contractsListCopy = [...this.state.contractsList]
+    let contractsListOriginal = [...contractsListCopy]
+    let contractsListDayCopy = [...contractsListCopy[dayIdx]]
+    let contractsListDayItemCopy = [...contractsListDayCopy[1]]
+    
+    console.log(value)
+
+    if (type === 'confirm-end-date') {
+      contractsListDayItemCopy[itemIdx].endDate = value
+    } else if (type === 'confirm-estimate') {
+      contractsListDayItemCopy[itemIdx].estimate = value
+    }
+
+    contractsListDayCopy[1] = contractsListDayItemCopy
+    contractsListCopy[dayIdx] = contractsListDayCopy
+
+    this.setState({contractsList: contractsListCopy}, apiService.updateContract(contractId, type, value, contractsListOriginal))
+  }
   
   render() {
     return (
       <>
         <div className='page-container'>Active, Inactive, All contracts</div>
         <div>
-          {this.state.contractsList !== '' ? <ContractsList contractsList={this.state.contractsList} /> : ''}
+          {this.state.contractsList !== '' ? 
+          <ContractsList 
+            contractsList={this.state.contractsList} 
+            handleUpdateContract={this.handleUpdateContract}
+          /> : ''
+           }
         </div>
       </>
     )

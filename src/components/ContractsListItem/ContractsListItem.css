@@ -41,26 +41,30 @@
 }
 
 .end-date {
-  color: blue;
+  color: grey;
 }
 
 .estimate {
-  color: blue;
+  color: grey;
 }
 
 .delete {
   color: red;
 }
 
-i {
-  font-size: 1.5em;
+.confirm {
+  color: green;
 }
 
-.fa-edit {
-  color: blue;
+.confirm-end-date {
+  color: green;
 }
 
-.fa-times-circle {
+.confirm-estimate {
+  color: green;
+}
+
+.confirm-delete {
   color: red;
 }
 

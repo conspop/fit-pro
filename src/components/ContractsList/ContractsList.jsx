@@ -14,6 +14,8 @@ function ContractsList(props) {
             <ContractsListDate listDay={listDay[0]} />
             {listDay[1].map((listItem,itemIdx) =>
               <ContractsListItem
+                dayIdx={dayIdx}
+                itemIdx={itemIdx}
                 studio={listItem.studio}
                 style={listItem.style}
                 time={moment(listItem.time).format('h:mma')}
@@ -25,6 +27,7 @@ function ContractsList(props) {
                   `($${listItem.base}+$${listItem.perHead}x${listItem.estimate}=$${listItem.base+listItem.perHead*listItem.estimate})`
                 }
                 contract={listItem}
+                handleUpdateContract={props.handleUpdateContract}
               />
             )}
           </>

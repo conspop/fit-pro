@@ -7,7 +7,8 @@ const User = require('../models/user');
 module.exports = {
   create,
   index,
-  changeStatus
+  changeStatus,
+  updateContract
 };
 
 async function create(req, res) {
@@ -73,4 +74,20 @@ async function changeStatus(req, res) {
   }
   contract.save()
   res.json(specificDates)
+}
+
+async function updateContract(req, res) {
+  const contract = await Contract.findById(req.body.contractId)
+  console.log(req.body.type)
+  if (req.body.type === 'confirm-end-date') {
+    contract.endDate = req.body.value
+  } else if (req.body.type === 'confirm-estimate') {
+    console.log('got here!')
+    contract.estimate = req.body.value
+  } else {
+    console.log('something went wrong!')
+  }
+  console.log(contract)
+  contract.save()
+  res.json(contract)
 }
