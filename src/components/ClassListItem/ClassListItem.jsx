@@ -36,8 +36,8 @@ class ClassListItem extends Component {
     }
   }
 
-  handleStudentsChange = (event) => {
-    this.setState({heads: event.target.value})
+  handleStudentsChange = (value) => {
+    this.setState({heads: value})
   }
   
   render() {
@@ -89,7 +89,7 @@ class ClassListItem extends Component {
                   >
                     Confirm
                   </button>
-                  <Input
+                  <InputNumber
                     className='students-input' 
                     onChange={this.handleStudentsChange}
                     autoFocus={true}
