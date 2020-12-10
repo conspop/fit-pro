@@ -1,0 +1,20 @@
+.homepage-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FDFAEC;
+  font-size: 25px;
+  padding: 20px;
+  z-index:-1;
+}
+
+.homepage-background-image {
+  position: absolute;
+  content:'';
+  height: 100vh;
+  width: 100vw;
+  background-image: url('https://images.unsplash.com/photo-1549995546-87cb41aa98a4?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80');
+  z-index:0;
+  opacity: 0.1;
+}

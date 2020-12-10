@@ -11,9 +11,10 @@ class ClassListItem extends Component {
   
   statusColor(status) {
     if (status === 'taught') {
-      return {color: '#4A8254'}
+      return {backgroundColor: '#4A8254', color: '#FDFAEC', opacity: 0.90}
+      // return {color: '#4A8254'}
     } else if (status === 'cancel') {
-      return {color: '#DE4A3F'}
+      return {color: '#DE4A3F', opacity:0.5}
     }
   }
 
@@ -126,7 +127,7 @@ class ClassListItem extends Component {
                   data-date={contract.date}
                   onClick={this.handleClick}
                   >
-                    Cancelled
+                    Cancel
                   </button>
                 </>
               }  

@@ -1,9 +1,13 @@
 import React from 'react'
+import './HomePage.css'
 
 function HomePage() {
   return (
     <div>
-      This is the HomePage!
+      <div className='homepage-container'>
+        Class tracking and invoicing software designed specifically for group class fitness professionals.
+        <div className='homepage-background-image'></div>
+      </div>
     </div>
   )
 }

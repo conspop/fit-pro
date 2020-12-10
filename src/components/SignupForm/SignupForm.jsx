@@ -19,6 +19,10 @@ class SignupForm extends React.Component {
       this.props.handleSignupOrLogin();
       this.props.history.push('/schedule')
     }
+  
+  isFormValid = () => {
+    return (this.state.username && this.state.password !== '' && this.state.password === this.state.confirmPassword)
+  }
 
   render() {
     return (
@@ -55,6 +59,10 @@ class SignupForm extends React.Component {
           <button
             className='add-button'
             onClick={this.handleSubmit}
+            style={this.isFormValid() ? {} : {opacity:.5}}
+            disabled={
+              (!this.isFormValid())
+            }
           >
             Sign Up
           </button>
