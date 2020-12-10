@@ -136,6 +136,7 @@ class AddItemForm extends Component {
                     onChange={this.handleStartDateChange} 
                     value={startDate}
                     inputReadOnly={true}
+                    placeholder=''
                   />
                 </Space>
               </div>
@@ -150,6 +151,7 @@ class AddItemForm extends Component {
                     onChange={this.handleEndDateChange} 
                     value={endDate}
                     inputReadOnly={true}
+                    placeholder=''
                   />
                 </Space>
               </div>
@@ -167,6 +169,7 @@ class AddItemForm extends Component {
                     onChange={this.handleDateChange} 
                     value={date}
                     inputReadOnly={true}
+                    placeholder=''
                   />
                 </Space>
               </div>
@@ -185,6 +188,7 @@ class AddItemForm extends Component {
                 onChange={this.handleTimeChange}
                 value={time}
                 inputReadOnly={true}
+                placeholder=''
               />
             </div>
             <div className='class-length'>
@@ -194,7 +198,7 @@ class AddItemForm extends Component {
                   id='classLength' 
                   value={classLength} 
                   onChange={this.handleChange} 
-                  inputmode='numeric'
+                  inputMode='numeric'
                 />
               </div>
             </div>
@@ -239,7 +243,7 @@ class AddItemForm extends Component {
                     id='rate' 
                     value={rate} 
                     onChange={this.handleChange} 
-                    inputmode='numeric'
+                    inputMode='numeric'
                   />
                 </div>
               </div>
@@ -253,7 +257,7 @@ class AddItemForm extends Component {
                     id='base' 
                     value={base} 
                     onChange={this.handleChange} 
-                    inputmode='numeric'
+                    inputMode='numeric'
                   />
                 </div>
               </div>
@@ -264,7 +268,7 @@ class AddItemForm extends Component {
                     id='perHead' 
                     value={perHead} 
                     onChange={this.handleChange} 
-                    inputmode='numeric'
+                    inputMode='numeric'
                   />
                 </div>
               </div>
@@ -275,7 +279,7 @@ class AddItemForm extends Component {
                     id='estimate' 
                     value={estimate} 
                     onChange={this.handleChange} 
-                    inputmode='numeric'
+                    inputMode='numeric'
                   />
                 </div>
               </div>

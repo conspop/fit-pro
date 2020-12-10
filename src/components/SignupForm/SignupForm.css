@@ -10,3 +10,9 @@
 .signup-form button {
   width: 200px;
 }
+
+.signup-message {
+  text-align: center;
+  margin-top: 10px;
+  color: #DE4A3F;
+}

@@ -6,7 +6,7 @@ const SALT_ROUNDS = 6;
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
+  username: {type: String, required:true, unique: true, dropDups: true},
   password: String,
   contracts: [{ type: Schema.Types.ObjectId, ref: 'Contract'}],
   singles: [{ type: Schema.Types.ObjectId, ref: 'Single'}],

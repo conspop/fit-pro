@@ -79,11 +79,11 @@ class App extends Component {
             </div> :
             <Redirect to ='/login' />
           )}/>
-          {
+          <Route render={({location}) => (
             userService.getUser() ?
-            <Footer /> :
+            <Footer location={location}/> :
             ''
-          }
+          )}/>
         </div>
       </Switch>
     )

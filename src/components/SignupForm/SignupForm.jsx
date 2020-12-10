@@ -7,7 +7,8 @@ class SignupForm extends React.Component {
   state = {
     username:'',
     password:'',
-    confirmPassword:''
+    confirmPassword:'',
+    message:''
   }
   
   handleChange = (e) => {
@@ -15,9 +16,17 @@ class SignupForm extends React.Component {
   }
 
   handleSubmit = async () => {
-      await userService.signup(this.state)
-      this.props.handleSignupOrLogin();
-      this.props.history.push('/schedule')
+      try {
+        await userService.signup(this.state)
+        this.props.handleSignupOrLogin();
+        this.props.history.push('/schedule')
+      } catch (err) {
+        this.setState({
+          password:'',
+          confirmPassword:'',
+          message: err.message
+        })
+      }
     }
   
   isFormValid = () => {
@@ -54,6 +63,11 @@ class SignupForm extends React.Component {
               type='password'
             />
           </label>
+          {
+            this.state.message !== '' ?
+            <div className='signup-message'>{this.state.message}</div> :
+            ''
+          }
         </div>
         <div className="button-container">
           <button

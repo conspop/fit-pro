@@ -2,13 +2,52 @@ import React from 'react'
 import './Footer.css'
 import { Link } from 'react-router-dom'
 
-function Footer() {
+const currentNavTextStyle = {
+  fontWeight: 700,
+}
+
+const currentNavBoxStyle = {
+  borderWidth: '2px',
+  borderTopStyle: 'solid',
+  borderColor: '#FDFAEC'
+
+}
+
+function Footer(props) {
   return (
     <div className='bottom-nav'>
-      <div className='bottom-nav-item'><Link to='/schedule'>Schedule</Link></div>
-      <div className='bottom-nav-item'><Link to='/contracts'>Contracts</Link></div>
-      <div className='bottom-nav-item'><Link to='/'>Invoices</Link></div>
-      <div className='bottom-nav-item'><Link to='/add'>Add</Link></div>
+      <div className='bottom-nav-item' style={props.location.pathname === '/schedule' ? currentNavBoxStyle : {}}>
+        <Link 
+          to='/schedule'
+          style={props.location.pathname === '/schedule' ? currentNavTextStyle : {}}
+        >
+          View Schedule
+        </Link>
+      </div>
+      <div className='bottom-nav-item' style={props.location.pathname === '/contracts' ? currentNavBoxStyle : {}}>
+        <Link 
+          to='/contracts'
+          style={props.location.pathname === '/contracts' ? currentNavTextStyle : {}}
+        >
+          Weekly Classes
+        </Link>
+      </div>
+      <div className='bottom-nav-item' style={props.location.pathname === '/' ? currentNavBoxStyle : {}}>
+        <Link 
+          to='/'
+          style={props.location.pathname === '/' ? currentNavTextStyle : {}}
+        >
+          Create Invoices
+        </Link>
+      </div>
+      <div className='bottom-nav-item' style={props.location.pathname === '/add' ? currentNavBoxStyle : {}}>
+        <Link 
+          to='/add'
+          style={props.location.pathname === '/add' ? currentNavTextStyle : {}}
+        >
+          Add Classes
+        </Link>
+      </div>
     </div>
   )
 }

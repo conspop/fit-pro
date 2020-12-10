@@ -7,6 +7,7 @@ class LoginForm extends React.Component {
   state = {
     username:'',
     password:'',
+    message:''
   }
   
   handleChange = (e) => {
@@ -14,10 +15,21 @@ class LoginForm extends React.Component {
   }
 
   handleSubmit = async () => {
-      await userService.login(this.state)
-      this.props.handleSignupOrLogin();
-      this.props.history.push('/schedule')
+      try {
+        await userService.login(this.state)
+        this.props.handleSignupOrLogin();
+        this.props.history.push('/schedule')
+      } catch (err) {
+        this.setState({
+          message: err.message,
+          password:''
+        })
+      }
     }
+  
+  isFormValid = () => {
+    return (this.state.username && this.state.password)
+  }
 
   render() {
     return (
@@ -40,15 +52,27 @@ class LoginForm extends React.Component {
               type='password'
             />
           </label> 
+          {
+            this.state.message ?
+            <div className='login-message'>
+              {this.state.message}
+            </div> 
+            :
+            ''
+          }
         </div>
         <div className="button-container">
           <button
             className='add-button'
             onClick={this.handleSubmit}
+            style={this.isFormValid() ? {} : {opacity:.5}}
+            disabled={
+              (!this.isFormValid())
+            }
           >
             Login
           </button>
-        </div>
+        </div>        
       </div>
     )
   }

@@ -10,3 +10,9 @@
 .login-form button {
   width: 200px;
 }
+
+.login-message {
+  text-align: center;
+  margin-top: 10px;
+  color: #DE4A3F;
+}
