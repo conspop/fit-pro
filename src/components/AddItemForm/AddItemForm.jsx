@@ -73,10 +73,9 @@ class AddItemForm extends Component {
       delete details.date
       await apiService.addContract(details);
     } else {
-      console.log('single!')
       delete details.startDate
       delete details.endDate
-      console.log('before single: ',details)
+      details.heads = details.estimate
       await apiService.addSingle(details);
     }
     this.clearState();
@@ -128,7 +127,7 @@ class AddItemForm extends Component {
           <div className='date-selector'>
             <div className='start-date'>
               <div>
-                Start date
+                First Class
               </div>
               <div> 
                 <Space direction="vertical">
@@ -137,13 +136,14 @@ class AddItemForm extends Component {
                     value={startDate}
                     inputReadOnly={true}
                     placeholder=''
+                    allowClear={false}
                   />
                 </Space>
               </div>
             </div>  
             <div className='end-date'>
               <div>
-                End date?
+                End date (If Known)
               </div>
               <div>
                 <Space direction="vertical">
@@ -152,6 +152,7 @@ class AddItemForm extends Component {
                     value={endDate}
                     inputReadOnly={true}
                     placeholder=''
+                    allowClear={false}
                   />
                 </Space>
               </div>
@@ -170,6 +171,7 @@ class AddItemForm extends Component {
                     value={date}
                     inputReadOnly={true}
                     placeholder=''
+                    allowClear={false}
                   />
                 </Space>
               </div>

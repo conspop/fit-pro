@@ -1,6 +1,7 @@
 import {Component} from 'react'
 import './ClassListItem.css'
 import {InputNumber, Input} from 'antd'
+import moment from 'moment'
 
 class ClassListItem extends Component {
   state={
@@ -105,18 +106,23 @@ class ClassListItem extends Component {
                 </>
                 :
                 <>
-                  <button
-                    className='taught'
-                    data-dayidx={dayIdx}
-                    data-itemidx={itemIdx}
-                    data-type={type}
-                    data-id={id}
-                    data-status='taught'
-                    data-date={contract.date}
-                    onClick={this.handleClick}
-                  >
-                    Taught
-                  </button>
+                  {
+                    moment(new Date()).isAfter(moment(contract.date)) ?
+                      <button
+                        className='taught'
+                        data-dayidx={dayIdx}
+                        data-itemidx={itemIdx}
+                        data-type={type}
+                        data-id={id}
+                        data-status='taught'
+                        data-date={contract.date}
+                        onClick={this.handleClick}
+                      >
+                        Taught
+                      </button>
+                      :
+                      ''
+                  }
                   <button
                   className='cancel'
                   data-dayidx={dayIdx}

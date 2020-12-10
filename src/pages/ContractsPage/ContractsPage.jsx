@@ -50,7 +50,6 @@ class ContractsPage extends Component {
   render() {
     return (
       <>
-        <div className='page-container'>Active, Inactive, All contracts</div>
         <div>
           {this.state.contractsList !== '' ? 
           <ContractsList 

@@ -104,110 +104,118 @@ class ContractsListItem extends Component {
         <div className='style-and-studio'>{style} @ {studio}</div>
         <div className='time'>{time}&nbsp;({classLength})</div>
         <div className='rate'>{rateType} {rate}</div>
-        <div className='options'>
-          {
-            this.state.showOptions ?
-            <>
-              <button 
-                className='end-date'
-                onClick={this.handleClick}
-              >
-                End Date
-              </button>
-              <button 
-                className='estimate'
-                onClick={this.handleClick}
-              >
-                Estimate
-              </button>
-              <button 
-                className='delete'
-                onClick={this.handleClick}
-              >
-                Delete
-              </button>
-            </>
-            :
-            ''
-          }
-          {
-            this.state.showUpdateEndDate ?
-            <>
-              <button 
-                className='undo'
-                onClick={this.handleClick}
-              >
-                Back
-              </button>
-              <Space direction="vertical" size={12}>
-                <DatePicker
-                  onChange={this.handleNewEndDateChange}
-                  onClick={this.handleClickDateField}
-                  value={this.state.newEndDate}
-                  allowClear={false}
-                  placeholder={''}
-                  suffixIcon={''}
-                  open={this.state.openCalendar}
-                  format={dateFormat}
-                  inputReadOnly={true}
+        
+          <div className='options'>
+            {
+              this.state.showOptions ?
+              <>
+                {this.props.contractToggle !== 'inactive' ?
+                  <>  
+                    <button 
+                      className='end-date'
+                      onClick={this.handleClick}
+                    >
+                      End Date
+                    </button>
+                    <button 
+                      className='estimate'
+                      onClick={this.handleClick}
+                    >
+                      Estimate
+                    </button>
+                  </>  
+                  :
+                  ''
+                }
+                  <button 
+                    className='delete'
+                    onClick={this.handleClick}
+                  >
+                  Delete
+                </button>
+              </>
+              :
+              ''
+            }
+            {
+              this.state.showUpdateEndDate ?
+              <>
+                <button 
+                  className='undo'
+                  onClick={this.handleClick}
+                >
+                  Back
+                </button>
+                <Space direction="vertical" size={12}>
+                  <DatePicker
+                    onChange={this.handleNewEndDateChange}
+                    onClick={this.handleClickDateField}
+                    value={this.state.newEndDate}
+                    allowClear={false}
+                    placeholder={''}
+                    suffixIcon={''}
+                    open={this.state.openCalendar}
+                    format={dateFormat}
+                    inputReadOnly={true}
+                  />
+                </Space>
+                <button 
+                  className='confirm-end-date'
+                  onClick={this.handleClick}
+                >
+                  Confirm
+                </button>
+              </>
+              :
+              ''
+            }
+            {
+              this.state.showUpdateEstimate ?
+              <>
+                <button 
+                  className='undo'
+                  onClick={this.handleClick}
+                >
+                  Back
+                </button>
+                <Input 
+                  className='heads-input'
+                  onChange={this.handleEstimateChange}
+                  value={this.state.newEstimate}
+                  autoFocus={true}
+                  inputmode='numeric'
                 />
-              </Space>
-              <button 
-                className='confirm-end-date'
-                onClick={this.handleClick}
-              >
-                Confirm
-              </button>
-            </>
-            :
-            ''
-          }
-          {
-            this.state.showUpdateEstimate ?
-            <>
-              <button 
-                className='undo'
-                onClick={this.handleClick}
-              >
-                Back
-              </button>
-              <Input 
-                className='heads-input'
-                onChange={this.handleEstimateChange}
-                value={this.state.newEstimate}
-                autoFocus={true}
-                inputmode='numeric'
-              />
-              <button 
-                className='confirm-estimate'
-                onClick={this.handleClick}
-              >
-                Confirm
-              </button>
-            </>
-            :
-            ''
-          }
-          {
-            this.state.showConfirmDelete ?
-            <>
-              <button 
-                className='undo'
-                onClick={this.handleClick}
-              >
-                Back
-              </button>
-              <button 
-                className='confirm-delete'
-                onClick={this.handleClick}
-              >
-                Confirm Delete
-              </button>
-            </>
-            :
-            ''
-          }
-        </div>
+                <button 
+                  className='confirm-estimate'
+                  onClick={this.handleClick}
+                >
+                  Confirm
+                </button>
+              </>
+              :
+              ''
+            }
+            {
+              this.state.showConfirmDelete ?
+              <>
+                <button 
+                  className='undo'
+                  onClick={this.handleClick}
+                >
+                  Back
+                </button>
+                <button 
+                  className='confirm-delete'
+                  onClick={this.handleClick}
+                >
+                  Confirm Delete
+                </button>
+              </>
+              :
+              ''
+            }
+          </div>
+      
       </div>
     )
   }

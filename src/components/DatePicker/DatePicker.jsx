@@ -29,7 +29,7 @@ class DatePicker extends React.Component {
   
   render(props) {
     return (
-      <div className='page-container'>
+      <div className='page-container no-border'>
         <div className='date-display-container'>
           <div className='date-display'>
             {this.props.startDate.format('l')} to {this.props.endDate.format('l')}
