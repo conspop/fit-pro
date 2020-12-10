@@ -1,12 +1,13 @@
 import React from 'react'
 import './SignupForm.css'
 import userService from '../../utils/userService'
+import {Input} from 'antd'
 
 class SignupForm extends React.Component {
   state = {
     username:'',
     password:'',
-    passwordRepeat:''
+    confirmPassword:''
   }
   
   handleChange = (e) => {
@@ -21,28 +22,43 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className='signup-form'>
-        <label>
-          Username: 
-          <input 
-            name='username'
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-        </label>
-        <label>
-          Password: 
-          <input 
-            name='password'
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-        </label> 
-        <button
-          onClick={this.handleSubmit}
-        >
-          Sign Up
-        </button>
+      <div className='page-container form'>
+        <div className='signup-form form-child'>
+          <label>
+            Username 
+            <Input 
+              name='username'
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </label>
+          <label>
+            Password
+            <Input 
+              name='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+              type='password'
+            />
+          </label> 
+          <label>
+            Confirm Password
+            <Input 
+              name='confirmPassword'
+              value={this.state.confirmPassword}
+              onChange={this.handleChange}
+              type='password'
+            />
+          </label>
+        </div>
+        <div className="button-container">
+          <button
+            className='add-button'
+            onClick={this.handleSubmit}
+          >
+            Sign Up
+          </button>
+        </div>
       </div>
     )
   }
