@@ -6,10 +6,10 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import ContractsPage from './pages/ContractsPage/ContractsPage';
 import AddItemForm from './components/AddItemForm/AddItemForm'
-import EditItemForm from './components/AddItemForm/AddItemForm'
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import HomePage from './pages/HomePage/HomePage';
+import InvoicePage from './pages/InvoicePage/InvoicePage'
 
 import userService from './utils/userService'
 
@@ -76,6 +76,13 @@ class App extends Component {
             userService.getUser() ?
             <div>
               <AddItemForm />
+            </div> :
+            <Redirect to ='/login' />
+          )}/>
+          <Route exact path='/invoice' render={() => (
+            userService.getUser() ?
+            <div>
+              <InvoicePage />
             </div> :
             <Redirect to ='/login' />
           )}/>

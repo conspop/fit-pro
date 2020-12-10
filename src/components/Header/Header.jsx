@@ -18,7 +18,7 @@ function Header({user, handleLogout}) {
   return (
     <div className='header-container'>
       <div className='header-logo'>
-        <Link to='/'>FITPRO</Link>
+        FITPRO
       </div>
       {auth}
     </div>

@@ -35,7 +35,7 @@ class DatePicker extends React.Component {
             {this.props.startDate.format('ll')} to {this.props.endDate.format('ll')}
           </div>
           <div>
-            <button onClick={this.handleOpenSelector}>Change</button> 
+            <button onClick={this.handleOpenSelector}><i class="fas fa-chevron-down"></i></button> 
           </div>
         </div> 
         {this.state.showSelector ?

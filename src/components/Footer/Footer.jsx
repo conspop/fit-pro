@@ -40,10 +40,10 @@ function Footer(props) {
           Add Classes
         </Link>
       </div>
-      <div className='bottom-nav-item' style={props.location.pathname === '/' ? currentNavBoxStyle : {}}>
+      <div className='bottom-nav-item' style={props.location.pathname === '/invoice' ? currentNavBoxStyle : {}}>
         <Link 
-          to='/'
-          style={props.location.pathname === '/' ? currentNavTextStyle : {}}
+          to='/invoice'
+          style={props.location.pathname === '/invoice' ? currentNavTextStyle : {}}
         >
           Create Invoices
         </Link>
