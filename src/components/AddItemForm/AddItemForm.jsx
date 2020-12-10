@@ -96,6 +96,51 @@ class AddItemForm extends Component {
   handleTimeChange = (time) => {
     this.setState({time:time})
   }
+
+  isFormValid = () => {
+      const {isContract, isFlatRate, studio, style, startDate, endDate, date, time, classLength, rate, base, perHead, estimate} = this.state
+      if (isContract && isFlatRate) {
+        return (
+          studio &&
+          style &&
+          startDate &&
+          time &&
+          classLength &&
+          rate
+        )
+      } else if (isContract && !isFlatRate) {
+        return (
+          studio &&
+          style &&
+          startDate &&
+          time &&
+          classLength &&
+          base &&
+          perHead &&
+          estimate
+        )
+      } else if (!isContract && !isFlatRate) {
+        return (
+          studio &&
+          style &&
+          date &&
+          time &&
+          classLength &&
+          base &&
+          perHead &&
+          estimate
+        )
+      } else if (!isContract && isFlatRate) {
+        return (
+          studio &&
+          style &&
+          date &&
+          time &&
+          classLength &&
+          rate
+        )
+      }
+  }
   
   render() {
     const {isContract, isFlatRate, studio, style, classLength, rate, base, perHead, estimate, time, date, startDate, endDate} = this.state
@@ -290,7 +335,16 @@ class AddItemForm extends Component {
           </div>
         </div>
         <div className='button-container'>
-          <button className='add-button' onClick={this.handleSubmit}>Add</button>
+          <button
+            className='add-button' 
+            onClick={this.handleSubmit}
+            style={this.isFormValid() ? {} : {opacity:.5}}
+            disabled={
+              (!this.isFormValid())
+            }
+          >
+            Add
+          </button>
         </div>
 
       </div>

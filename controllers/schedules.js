@@ -58,7 +58,13 @@ async function show(req, res) {
 
   // sort scheduleArray by date
   scheduleArray.sort((a, b) => {
-    return moment(a.date).isBefore(moment(b.date)) ? -1 : 1
+    const aHours = moment(a.time).hours()
+    const aMinutes = moment(a.time).minutes()
+    const bHours = moment(b.time).hours()
+    const bMinutes = moment(b.time).minutes()
+    const aDateTime = moment(a.date).hours(aHours).minutes(aMinutes)
+    const bDateTime = moment(b.date).hours(bHours).minutes(bMinutes)
+    return moment(aDateTime).isBefore(moment(bDateTime)) ? -1 : 1
   })
 
   const numClasses = scheduleArray.length

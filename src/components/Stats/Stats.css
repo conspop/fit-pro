@@ -1,6 +1,18 @@
 .stats-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  justify-items: center;
+  column-gap: 5px;
+  border: none;
+}
+
+.stats-box {
+  background-color: #FDFAEC;
+  margin: 5px;
+  border-radius: 5px;
+  opacity: .9;
+  color: #303536;
+  padding: 5px;
+  text-align: center;
   font-size: 18px;
+  font-weight: 500;
 }

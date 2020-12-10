@@ -32,7 +32,7 @@ class DatePicker extends React.Component {
       <div className='page-container no-border'>
         <div className='date-display-container'>
           <div className='date-display'>
-            {this.props.startDate.format('l')} to {this.props.endDate.format('l')}
+            {this.props.startDate.format('ll')} to {this.props.endDate.format('ll')}
           </div>
           <div>
             <button onClick={this.handleOpenSelector}>Change</button> 
@@ -40,34 +40,36 @@ class DatePicker extends React.Component {
         </div> 
         {this.state.showSelector ?
         <>
-          <div className='datepicker-dates-container form-child'>
-            <div className='start'>
-              <div>
-                Start Date
+          <div className="page-container form">
+            <div className='datepicker-dates-container form-child'>
+              <div className='start'>
+                <div>
+                  Start Date
+                </div>
+                <Space direction="vertical" size={12}>
+                  <DatePickerComponent 
+                    onChange={this.handleInputStartChange}
+                    id='inputStart'
+                    value={moment(this.state.inputStart)}
+                    allowClear={false}
+                    inputReadOnly={true}
+                  />
+                </Space>
               </div>
-              <Space direction="vertical" size={12}>
-                <DatePickerComponent 
-                  onChange={this.handleInputStartChange}
-                  id='inputStart'
-                  value={moment(this.state.inputStart)}
-                  allowClear={false}
-                  inputReadOnly={true}
-                />
-              </Space>
-            </div>
-            <div className='end'>
-              <div>
-                End Date
+              <div className='end'>
+                <div>
+                  End Date
+                </div>
+                <Space direction="vertical" size={12}>
+                  <DatePickerComponent 
+                    onChange={this.handleInputEndChange}
+                    id='inputEnd'
+                    value={moment(this.state.inputEnd)}
+                    allowClear={false}
+                    inputReadOnly={true}
+                  />
+                </Space>
               </div>
-              <Space direction="vertical" size={12}>
-                <DatePickerComponent 
-                  onChange={this.handleInputEndChange}
-                  id='inputEnd'
-                  value={moment(this.state.inputEnd)}
-                  allowClear={false}
-                  inputReadOnly={true}
-                />
-              </Space>
             </div>
           </div>
             <div className='button-container'>

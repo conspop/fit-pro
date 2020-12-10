@@ -49,7 +49,15 @@ class ContractsListItem extends Component {
         showConfirmDelete: true,
       })
     } else if (buttonClicked === 'confirm-end-date') {
-      console.log('process started')
+      this.setState({
+        message: '',
+        showOptions: true,
+        showUpdateEndDate: false,
+        newEndDate: '',
+        openCalendar: false,
+        showUpdateEstimate: false,
+        showConfirmDelete: false,
+      })
       this.props.handleUpdateContract(
         this.props.contract._id, 
         'confirm-end-date', 
@@ -58,6 +66,15 @@ class ContractsListItem extends Component {
         this.props.itemIdx 
       )
     } else if (buttonClicked === 'confirm-estimate') {
+      this.setState({
+        message: '',
+        showOptions: true,
+        showUpdateEndDate: false,
+        newEndDate: '',
+        openCalendar: false,
+        showUpdateEstimate: false,
+        showConfirmDelete: false,
+      })
       this.props.handleUpdateContract(
         this.props.contract._id, 
         'confirm-estimate', 
@@ -66,6 +83,15 @@ class ContractsListItem extends Component {
         this.props.itemIdx 
       )
     } else if (buttonClicked === 'confirm-delete') {
+      this.setState({
+        message: '',
+        showOptions: true,
+        showUpdateEndDate: false,
+        newEndDate: '',
+        openCalendar: false,
+        showUpdateEstimate: false,
+        showConfirmDelete: false,
+      })
       this.props.handleDeleteContract(
         this.props.contract._id, 
         this.props.dayIdx, 
@@ -100,7 +126,9 @@ class ContractsListItem extends Component {
           <div className='message'>{this.state.message}</div> :
           ''
         }
-        <div className='timeframe'>{moment(contract.startDate).format('l')} to {moment(contract.endDate).format('l') === 'Invalid date' ? '∞' : moment(contract.endDate).format('l')}</div>
+        <div className='timeframe'>{
+        contract.endDate ? `Ends ${moment(contract.endDate).format('ll')}` : 'No end date'
+        }</div>
         <div className='style-and-studio'>{style} @ {studio}</div>
         <div className='time'>{time}&nbsp;({classLength})</div>
         <div className='rate'>{rateType} {rate}</div>

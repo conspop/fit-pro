@@ -7,7 +7,7 @@ const currentNavTextStyle = {
 }
 
 const currentNavBoxStyle = {
-  borderWidth: '2px',
+  borderWidth: '4px',
   borderTopStyle: 'solid',
   borderColor: '#FDFAEC'
 
@@ -32,20 +32,20 @@ function Footer(props) {
           Weekly Classes
         </Link>
       </div>
-      <div className='bottom-nav-item' style={props.location.pathname === '/' ? currentNavBoxStyle : {}}>
-        <Link 
-          to='/'
-          style={props.location.pathname === '/' ? currentNavTextStyle : {}}
-        >
-          Create Invoices
-        </Link>
-      </div>
       <div className='bottom-nav-item' style={props.location.pathname === '/add' ? currentNavBoxStyle : {}}>
         <Link 
           to='/add'
           style={props.location.pathname === '/add' ? currentNavTextStyle : {}}
         >
           Add Classes
+        </Link>
+      </div>
+      <div className='bottom-nav-item' style={props.location.pathname === '/' ? currentNavBoxStyle : {}}>
+        <Link 
+          to='/'
+          style={props.location.pathname === '/' ? currentNavTextStyle : {}}
+        >
+          Create Invoices
         </Link>
       </div>
     </div>

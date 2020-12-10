@@ -20,8 +20,12 @@ function getClassesAndIncome(schedule) {
   
   return (
     <>
-      <div>Classes: {classes}</div>
-      <div>Income: {income}</div>
+      <div className="stats-box">
+        <div>{classes} classes</div>
+      </div>  
+      <div className="stats-box">
+        <div>${income}</div>
+      </div>
     </>
   )
 }
