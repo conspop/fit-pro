@@ -1,6 +1,6 @@
 import './App.css';
 import { Component } from 'react'
-import { Switch, Route} from 'react-router-dom'
+import { Switch, Route, Redirect} from 'react-router-dom'
 import SchedulePage from './pages/SchedulePage/SchedulePage'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
@@ -9,6 +9,7 @@ import AddItemForm from './components/AddItemForm/AddItemForm'
 import EditItemForm from './components/AddItemForm/AddItemForm'
 import SignupPage from './pages/SignupPage/SignupPage';
 import LoginPage from './pages/LoginPage/LoginPage';
+import HomePage from './pages/HomePage/HomePage';
 
 import userService from './utils/userService'
 
@@ -36,6 +37,11 @@ class App extends Component {
             user={user} 
             handleLogout={this.handleLogout}
           />
+          <Route exact path='/'>
+            <div>
+              <HomePage />
+            </div>
+          </Route>
           <Route exact path='/login' render={({history}) =>
             <div>
               <LoginPage
@@ -52,27 +58,32 @@ class App extends Component {
               />
             </div>
           } />
-          <Route exact path='/schedule'>
+          <Route exact path='/schedule' render={() => (
+            userService.getUser() ?
             <div>
               <SchedulePage />
-            </div>
-          </Route>
-          <Route exact path='/contracts'>
+            </div> :
+            <Redirect to ='/login' />
+          )}/>
+          <Route exact path='/contracts' render={() => (
+            userService.getUser() ?
             <div>
               <ContractsPage />
-            </div>
-          </Route>
-          <Route exact path='/add'>
+            </div> :
+            <Redirect to ='/login' />
+          )}/>
+          <Route exact path='/add' render={() => (
+            userService.getUser() ?
             <div>
               <AddItemForm />
-            </div>
-          </Route>
-          <Route exact path='/edit'>
-            <div>
-              <EditItemForm />
-            </div>
-          </Route>
-          <Footer />
+            </div> :
+            <Redirect to ='/login' />
+          )}/>
+          {
+            userService.getUser() ?
+            <Footer /> :
+            ''
+          }
         </div>
       </Switch>
     )
