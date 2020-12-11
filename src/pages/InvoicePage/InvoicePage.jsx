@@ -1,6 +1,7 @@
 import React from 'react';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import Invoice from '../../components/Invoice/Invoice'
+import './InvoicePage.css'
 
 const InvoicePage = () => {
   return (
@@ -8,9 +9,10 @@ const InvoicePage = () => {
       {/* <PDFViewer>
         <Invoice />
       </PDFViewer> */}
-      <PDFDownloadLink document={<Invoice />} fileName="invoice.pdf">
+      {/* <PDFDownloadLink document={<Invoice />} fileName="invoice.pdf">
         {({ blob, url, loading, error }) => (loading ? 'Loading document...' : 'Download now!')}
-      </PDFDownloadLink>
+      </PDFDownloadLink> */}
+      Coming soon!
     </div>
   )
 }

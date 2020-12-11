@@ -26,8 +26,17 @@
 
 @media screen and (min-width: 768px) {
   .bottom-nav {
-    width: 70%;
-    max-width: 1000px;
+    justify-content: center;
+    background-color: #0D3B66;
   }
-  
+
+  .bottom-nav-item {
+    width: 17.5%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .bottom-nav-item {
+    width: 10%;
+  }
 }
