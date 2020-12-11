@@ -23,3 +23,11 @@
   color: #FDFAEC;
   padding: 10px;
 }
+
+@media screen and (min-width: 768px) {
+  .bottom-nav {
+    width: 70%;
+    max-width: 1000px;
+  }
+  
+}
