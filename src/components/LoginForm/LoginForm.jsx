@@ -33,46 +33,48 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className='page-container form'>
-        <div className='login-form form-child'>
-          <label>
-            Username
-            <Input 
-              name='username'
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            Password 
-            <Input 
-              name='password'
-              value={this.state.password}
-              onChange={this.handleChange}
-              type='password'
-            />
-          </label> 
-          {
-            this.state.message ?
-            <div className='login-message'>
-              {this.state.message}
-            </div> 
-            :
-            ''
-          }
-        </div>
-        <div className="button-container">
-          <button
-            className='add-button'
-            onClick={this.handleSubmit}
-            style={this.isFormValid() ? {} : {opacity:.5}}
-            disabled={
-              (!this.isFormValid())
+      <div className='login-page-container'>
+        <div className='page-container form'>
+          <div className='login-form form-child'>
+            <label>
+              Username
+              <Input 
+                name='username'
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              Password 
+              <Input 
+                name='password'
+                value={this.state.password}
+                onChange={this.handleChange}
+                type='password'
+              />
+            </label> 
+            {
+              this.state.message ?
+              <div className='login-message'>
+                {this.state.message}
+              </div> 
+              :
+              ''
             }
-          >
-            Login
-          </button>
-        </div>        
+          </div>
+          <div className="button-container">
+            <button
+              className='add-button'
+              onClick={this.handleSubmit}
+              style={this.isFormValid() ? {} : {opacity:.5}}
+              disabled={
+                (!this.isFormValid())
+              }
+            >
+              Login
+            </button>
+          </div>        
+        </div>
       </div>
     )
   }

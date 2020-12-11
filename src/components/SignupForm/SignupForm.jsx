@@ -35,51 +35,53 @@ class SignupForm extends React.Component {
 
   render() {
     return (
-      <div className='page-container form'>
-        <div className='signup-form form-child'>
-          <label>
-            Username 
-            <Input 
-              name='username'
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            Password
-            <Input 
-              name='password'
-              value={this.state.password}
-              onChange={this.handleChange}
-              type='password'
-            />
-          </label> 
-          <label>
-            Confirm Password
-            <Input 
-              name='confirmPassword'
-              value={this.state.confirmPassword}
-              onChange={this.handleChange}
-              type='password'
-            />
-          </label>
-          {
-            this.state.message !== '' ?
-            <div className='signup-message'>{this.state.message}</div> :
-            ''
-          }
-        </div>
-        <div className="button-container">
-          <button
-            className='add-button'
-            onClick={this.handleSubmit}
-            style={this.isFormValid() ? {} : {opacity:.5}}
-            disabled={
-              (!this.isFormValid())
+      <div className='signup-page-container'>
+        <div className='page-container form'>
+          <div className='signup-form form-child'>
+            <label>
+              Username 
+              <Input 
+                name='username'
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </label>
+            <label>
+              Password
+              <Input 
+                name='password'
+                value={this.state.password}
+                onChange={this.handleChange}
+                type='password'
+              />
+            </label> 
+            <label>
+              Confirm Password
+              <Input 
+                name='confirmPassword'
+                value={this.state.confirmPassword}
+                onChange={this.handleChange}
+                type='password'
+              />
+            </label>
+            {
+              this.state.message !== '' ?
+              <div className='signup-message'>{this.state.message}</div> :
+              ''
             }
-          >
-            Sign Up
-          </button>
+          </div>
+          <div className="button-container">
+            <button
+              className='add-button'
+              onClick={this.handleSubmit}
+              style={this.isFormValid() ? {} : {opacity:.5}}
+              disabled={
+                (!this.isFormValid())
+              }
+            >
+              Sign Up
+            </button>
+          </div>
         </div>
       </div>
     )

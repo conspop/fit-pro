@@ -1,3 +1,14 @@
+.login-page-container {
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FDFAEC;
+  font-size: 25px;
+  padding: 20px;
+  z-index:-1;
+}
+
 .login-form {
   display:flex;
   flex-direction: column;
