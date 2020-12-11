@@ -5,7 +5,6 @@ import moment from 'moment'
 import './ClassList.css'
 
 function ClassList(props) {
-  console.log(props.schedule)
   return (
     <div className='page-container list'>
       {props.schedule.map((listDay,dayIdx) => {

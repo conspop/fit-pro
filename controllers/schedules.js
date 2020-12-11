@@ -38,6 +38,7 @@ async function show(req, res) {
         return moment(specificDate.date).isSame(moment(dateInstance))
       }) 
       const status = foundDate ? foundDate.status : 'nostatus'
+      const heads = foundDate ? foundDate.heads : estimate
       const contractInstance = {
         studio,
         style,
@@ -46,7 +47,7 @@ async function show(req, res) {
         rate,
         base,
         perHead,
-        heads: specificDates.heads || estimate,
+        heads,
         status,
         date: dateInstance.clone(),
         contractId: _id

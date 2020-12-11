@@ -5,7 +5,7 @@ import { DatePicker, Space, TimePicker, Input } from 'antd';
 
 class AddItemForm extends Component {
   state = {
-    isContract: false,
+    isContract: true,
     isFlatRate: true,
     isEndDate: false,
     studio:'',
@@ -23,7 +23,7 @@ class AddItemForm extends Component {
 
   clearState() {
     this.setState({
-      isContract: false,
+      isContract: true,
       isFlatRate: true,
       isEndDate: false,
       studio:'',
