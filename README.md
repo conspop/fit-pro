@@ -61,13 +61,13 @@ FITPRO is a class tracking and invoice creation tool designed specifically for g
 
 The user adds their weekly and one-time classes to FITPRO.
 
-<img src='./screenshots/add.png'>
+<img src='https://github.com/conspop/fit-pro/blob/main/screenshots/Add.png'>
 
 ### Weekly Class Summary
 
 The user can view their active or inactive weekly classes. They can also update the end date and estimated number of heads (for classes with per head payment terms) for these classes.
 
-<img src='./screenshots/weekly.png'>
+<img src='https://github.com/conspop/fit-pro/blob/main/screenshots/Weekly.png'>
 
 ### Schedule View
 
