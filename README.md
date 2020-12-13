@@ -73,8 +73,8 @@ The user can view their active or inactive weekly classes. They can also update 
 
 The user can view their schedule for any period which is populated based on their entered classes. They should tag the classes that they've taught and the classes that they've cancelled as such and the app will update their projected income and number of classes for the period.
 
-<img src='./screenshots/schedule.png'>
-<img src='./screenshots/schedule 2.png'>
+<img src='https://github.com/conspop/fit-pro/blob/main/screenshots/Schedule.png'>
+<img src='https://github.com/conspop/fit-pro/blob/main/screenshots/Schedule%202.png'>
 
 ## Next Steps
 
